@@ -1,0 +1,112 @@
+.flow-items.-space-between{ justify-content: space-between; }
+/* sections and tiles */
+section { border-bottom: 6px solid #f1f3f4; padding: 10px 0;  }
+section:last-child { border-bottom:0; }
+.tile > div {padding: 10px 15px;}
+.tile > div.-padding-bottom-none { padding-bottom: 0;}
+.tile.-align-center { text-align: center; }
+
+@media(min-width:1000px) {
+	.tile > div {padding: 15px}
+	section { border-bottom: none; padding: 20px 0}
+}
+
+/* store logos */
+.store-logo { display: block; width: 100% }
+.store-logo.-waitrose { height: 20px; width: 74px; margin-bottom: -4px; }
+.store-logo.-morrisons { height: 15px; width: 99px }
+.store-logo.-iceland { height: 14px; width: 62px}
+.store-logo.-sainsburys { height: 16px; width: 83px }
+.store-logo.-coop { height: 14px; width: 50px }
+.store-logo.-tesco { height: 14px; width: 49px}
+.store-logo.-asda { height: 13px; width: 44px }
+.store-logo.-homebargains { height: 18px; width: 87px }
+.store-logo.-wilko { height: 18px; width: 49px }
+.store-logo.-boots { height: 20px; width: 32px }
+.store-logo.-superdrug { height: 24px; width: 110px }
+.store-logo.-aldi { height: 24px; width: 59px;}
+.store-logo.-bm { height: 19px; width: 37px}
+.store-logo.-ocado {height: 19px;width: 73px;margin-left: -1px;}
+.store-logo.-savers {height: 17px;width: 66px}
+.store-logo.-poundland {height: 18px;width: 104px}
+.store-logo.-amazon {height: 18px;width: 60px;}
+.store-logo.-ebay {height:24px;width:46px;}
+.store-logo.-bother {height:19px;width:47px;}
+
+
+
+._item{ grid-template-columns: 200px 1fr 50px; padding: 15px 0; border-bottom: 1px solid #f1f1f1; align-items: center; grid-gap: 10px}
+._item:first-child{ padding-top: 0 }
+._item div{  font-size: 1.3rem }
+._item ._store-location{ font-weight: 500; margin-top: 5px; font-size: 1.1rem}
+._item ._store-opening{ font-weight: 300;font-size:1.1rem;}
+._item ._price{ font-size: 1.5rem;}
+._item ._price del{font-weight:normal }
+._item ._price ._per-item{font-weight: 300;font-size:1.1rem;}
+._item ._product-offer {color: #cc3327;font-weight: 600;font-size: 1rem ;padding: 3px 7px;border: 1.6px solid #ce4444;line-height: 7px;border-radius: 6px;vertical-align: middle;white-space: nowrap; display: inline-block; margin-top: 3px}
+
+button { cursor: pointer;  }
+
+button .small-icon,.button .small-icon{ width: 21px;height: 21px; }
+.-comp-visit-btn {
+	padding: 3px 8px;
+	border: 1px solid #1a73e8;
+	background: #1a73e8;
+	color: #fff;
+	border-radius: 5px;
+	line-height: 15px;
+	display: inline-block;
+	font-size: 11px;
+	-webkit-tap-highlight-color: transparent; font-weight: 600;position:relative; 
+	grid-gap: 10px;
+
+}
+
+/* disclaimer */
+.disclaimer{display: flex;align-items: center;grid-gap: 10px; align-items: center; padding-top: 20px}
+.disclaimer span{   font-size: 1.3rem;}
+.disclaimer .icon{ width: 24px; height: 24px}
+.disclaimer.-bg-red{padding:0 10px;margin-bottom:20px;border-radius: 4px;}
+.disclaimer ul{padding-left:0;}
+.disclaimer li{list-style-type:none;}
+
+.see-more {
+	column-span: all;
+	;width: 100%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+.see-more > div {
+	display: flex;
+	align-items: center;
+	padding: 0 10px 0 21px;
+	background: #fff;
+	font-size: 1.1rem;
+	border-radius: 30px;
+	border: 1px solid #d6d6d6;
+	position: static;
+	z-index: 2;
+	font-weight: 700
+}
+
+.see-more:before {
+	display: block;
+	content: "";
+	background: #d6d6d6;
+	height: 1px;
+	width: 100%;
+	position: absolute;
+	top: 13px;
+}
+
+.see-more:after {
+	content: " ";
+	background: red;
+	height: 83px;
+	background: linear-gradient(0deg,rgb(255 255 255) 40%,rgb(0 255 255 / 0%) 100%);
+	position: absolute;
+	width: 100%;
+	bottom: 13px;
+}

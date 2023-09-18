@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
-}
+/*---------------------------------------------------*/
+/* ###############~~ BASE ELEMENTS ~~############### */
+/* http://smacss.com/book/type-base */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=block');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+*{box-sizing: border-box;font-family:inherit;}
+html{font-size: 62.5%;scroll-behavior: smooth;}
+@media(max-width:1000px) {html{}.-mobile-lock{overflow:hidden;}}
+body{ margin: 0px; scroll-behavior: smooth; width: 100%;font-family: 'Poppins', sans-serif; color: #000;}
+a, font, input, td, div, textarea {font-size: 15px;  font-weight: 400; text-decoration: none; color: #000; line-height: 130%; font-size: 1.4rem}
+table, table td{padding: 0px; border-spacing: 0px; border-collapse: collapse;}
+table{ width: 100% }
+div{box-sizing: border-box}
+img{ border: 0;}h
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+hr { border-top: 1px solid #f1f1f1; }
+ul{ margin-left: 0px;padding-left: 20px;}
+svg { display: block; }
+a{ font-size: inherit;font-weight: 400; color: #0066b7; -webkit-tap-highlight-color: transparent;}
+b{ font-weight: 600 }
+.-hide-imp{display:none!important;}
+button { cursor: pointer;  }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* table */
+.table {width: 100%;}
+.table td {padding: 8px}
 
-.App-link {
-  color: #61dafb;
-}
+/* form elements */
+form{margin-top: 0px; margin-bottom: 0px;}
+form > div{margin-bottom:10px;}
+input{ font-size: 15px;font-size: 1.4rem;padding:5px;}
+input[type=text]{width:100%;max-width:300px;}
+textarea {width: 100%;max-width: 600px;min-height: 300px;}
+button,.button { background: none; border: none; display: inline-block; outline: none; padding: 0; color:inherit; -webkit-tap-highlight-color: transparent; font-weight: 600;position:relative; }
+button .small-icon,.button .small-icon{ width: 21px;height: 21px; }
+.-input{display:block;width:100%;margin-bottom:10px;border-radius:30px;padding:7px 15px;outline:none;background:#f1f3f4;border:none;}
+.-text-count{position:relative;}
+.-text-count textarea + .count {position: absolute;left: 13px;bottom: 13px;font-size: 1.2rem;}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
+/* headings */
+h1{ font-size: 2.6rem; margin: 0; margin-bottom: 5px;line-height: 1.5; }
+h2{ margin: 0;font-size: 2rem;font-weight: 600;line-height: 1.5; }
+h3{ margin: 0;font-size: 1.4rem;font-weight: 600; margin-bottom: 5px; flex: 0 0 100%;line-height: 1.5; }
+@media(min-width:1000px) {h2 { font-size: 2.4rem }}
+
+
