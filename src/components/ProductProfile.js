@@ -31,7 +31,7 @@
     const { productId } = useParams();
     const dataParam = new URLSearchParams(window.location.search).get('data');
     const data = dataParam ? JSON.parse(decodeURIComponent(dataParam)) : null;
-
+    
 
     const handleAddToList = () => {
       get_list_menu(this);
@@ -129,8 +129,8 @@
       </div>
       
       <div>
-        <WhereToBuy />
-        <TodayPrice />
+        <WhereToBuy data={data} />
+        <TodayPrice data ={data}/>
       <section>
     <div className="tile">
       <div>

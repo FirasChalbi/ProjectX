@@ -33,23 +33,23 @@ function Home() {
     <div className='parent'>
       
 <Sidebar />
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        paddingLeft: "30px"
-        
-      }}
-    >
-      <div
+<div
         style={{
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          padding: "0 20px", // Desktop padding
         }}
       >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            
+          }}
+        >
       
       
         {matchedProducts.map((product, index) => (

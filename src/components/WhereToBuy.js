@@ -2,72 +2,39 @@ import React, { useState } from 'react';
 import down from '../image/down.svg';
 import info from '../image/info.svg';
 import CF from '../image/carrefour.svg';
-import MP from '../image/monoprix.svg'
-import AZ from '../image/aziza.jpg'
+import MP from '../image/monoprix.svg';
 import './wheretobuy.css';
 
-function WhereToBuy() {
+function WhereToBuy({ data }) {
   const [showAll, setShowAll] = useState(false);
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
   };
+  
+  const shop1Product = data.shop1Product;
+  const shop2Product = data.shop2Product;
 
   const items = [
-    // Define your item objects here as needed
     {
       logo: CF,
-      price: '£2.25',
-      discountPrice: '£3.00',
-      perItemPrice: '£0.90 per 100ml',
-      offer: '£2.25 CLUBCARD',
-      link: '/product/open?i=17807309&amp;p=CKD322&amp;sp=2',
+      price: shop1Product.product_price,
+      discountPrice: shop1Product.regular_price,
+      perItemPrice: shop1Product.size,
+      offer: shop1Product.promo,
+      link: shop1Product.product_url,
     },
     {
       logo: MP,
-      price: '£2.25',
-      discountPrice: '£3.00',
-      perItemPrice: '£0.90 per 100ml',
-      offer: '£2.25 CLUBCARD',
-      link: '/product/open?i=17807309&amp;p=CKD322&amp;sp=2',
+      price: shop2Product.product_price,
+      discountPrice: shop2Product.regular_price,
+      perItemPrice: shop2Product.size,
+      offer: shop2Product.promo,
+      link: shop2Product.product_url,
     },
-    {
-      logo: AZ,
-      price: '£2.25',
-      discountPrice: '£3.00',
-      perItemPrice: '£0.90 per 100ml',
-      offer: '£2.25 CLUBCARD',
-      link: '/product/open?i=17807309&amp;p=CKD322&amp;sp=2',
-    },
-    {
-      logo: CF,
-      price: '£2.25',
-      discountPrice: '£3.00',
-      perItemPrice: '£0.90 per 100ml',
-      offer: '£2.25 CLUBCARD',
-      link: '/product/open?i=17807309&amp;p=CKD322&amp;sp=2',
-    },
-    {
-      logo: AZ,
-      price: '£2.25',
-      discountPrice: '£3.00',
-      perItemPrice: '£0.90 per 100ml',
-      offer: '£2.25 CLUBCARD',
-      link: '/product/open?i=17807309&amp;p=CKD322&amp;sp=2',
-    },
-    {
-      logo: MP,
-      price: '£2.25',
-      discountPrice: '£3.00',
-      perItemPrice: '£0.90 per 100ml',
-      offer: '£2.25 CLUBCARD',
-      link: '/product/open?i=17807309&amp;p=CKD322&amp;sp=2',
-    },
-
-    // Add more items here
+    
   ];
 
-  // Filter items to show only the first 4 or all items based on showAll state
   const filteredItems = showAll ? items : items.slice(0, 3);
 
   return (
@@ -94,7 +61,7 @@ function WhereToBuy() {
                   <br />
                   <div className="_per-item -color-grey">{item.perItemPrice}<br /></div>
                 </div>
-                <div className="_product-offer">{item.offer}</div>
+                {item.offer && <div className="_product-offer">{item.offer}</div>}
               </div>
               <div>
                 <a className="-comp-visit-btn" href={item.link} rel="nofollow" target="_blank">VISIT</a>
@@ -108,7 +75,6 @@ function WhereToBuy() {
                 {showAll ? 'See Less' : 'See More'} <img src={down} alt="Add Icon" className="icon" style={{height:"25px",width:"15px",paddingLeft:"5px"}}/>
               </div>
             </button>
-            
           )}
 
           <div className="disclaimer">

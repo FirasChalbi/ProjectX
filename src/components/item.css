@@ -669,3 +669,92 @@
 
 	
 }
+
+
+
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .product-content {
+        flex-direction: column;
+    }
+    
+    .product-content .prod-item {
+        flex-direction: column;
+    }
+    
+    ._img img {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    ._img .count {
+        font-size: 1.2rem;
+    }
+    
+    .product-content ._title {
+        font-size: 1.5rem;
+    }
+    
+    .product-content .store-logo {
+        zoom: 0.6;
+    }
+    
+    .product-content ._stores {
+        flex-direction:row;
+    }
+    
+    .product-content ._stores ._store_logo {
+        width: 100px;
+    }
+    
+    .product-content ._stores ._store_price {
+        font-size: 1.2rem;
+    }
+    
+    .product-content .visit-cta {
+        font-size: 1rem;
+    }
+    
+    .product-content ._reviews .count {
+        font-size: 1rem;
+    }
+    
+    .product-content ._reviews .icon {
+        width: 40px;
+        height: 16px;
+    }
+    
+    .product-content ._review {
+        font-size: 1.1rem;
+    }
+    
+    .product-content ._brand {
+        font-size: 1.8rem;
+    }
+    
+    .product-content .tag {
+        font-size: 1rem;
+    }
+    
+    .store-logo.-waitrose {
+        height: 20px;
+        width: 80px;
+        margin-bottom: -3px;
+    }
+    
+    .txt {
+        font-size: 10px;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Add your tablet styles here */
+}
+
+/* Larger Screen Styles */
+@media (min-width: 1024px) {
+    /* Add your larger screen styles here */
+}
