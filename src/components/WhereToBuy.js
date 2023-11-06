@@ -64,7 +64,7 @@ function WhereToBuy({ data }) {
                 {item.offer && <div className="_product-offer">{item.offer}</div>}
               </div>
               <div>
-                <a className="-comp-visit-btn" href={item.link} rel="nofollow" target="_blank">VISIT</a>
+                <a className="-comp-visit-btn" href={item.link} rel="noreferrer noopener" target="_blank">VISIT</a>
               </div>
             </div>
           ))}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ProductProfile from '../components/ProductProfile';
+//import ProductProfile from '../components/ProductProfile';
 import Sidebar from '../components/Sidebar';
 
 function MatchedProducts() {
@@ -45,14 +45,14 @@ function MatchedProducts() {
               Name: {product.shop1Product.name} -
               Brand: {product.shop1Product.brand} -  
               Size: {product.shop1Product.size} -  
-              <a href={product.shop1Product.product_url} target="_blank">LINK</a>
+              <a href={product.shop1Product.product_url} rel="noreferrer noopener" target="_blank">LINK</a>
             </p>
             <p>
               Shop 2:
               Name: {product.shop2Product.name} -
               Brand: {product.shop2Product.brand} -
               Size: {product.shop2Product.size} - 
-              <a href={product.shop2Product.product_url} target="_blank">LINK</a>
+              <a href={product.shop2Product.product_url} rel="noreferrer noopener" target="_blank">LINK</a>
             </p>
             Similarity Score: {product.similarityScore}
           </li>
