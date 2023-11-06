@@ -1,13 +1,13 @@
-  import React, { useState } from 'react';
+  import React from 'react';
   import './profile.css';
   import add from '../image/add.svg'
   import added from '../image/added.svg'
-  import down from '../image/down.svg'
-  import info from '../image/info.svg'
+  //import down from '../image/down.svg'
+  //import info from '../image/info.svg'
   import CTS from '../image/CTS.jpg'
   import WhereToBuy from './WhereToBuy';
   import TodayPrice from './TodayPrice';
-  import { useParams } from 'react-router-dom';
+  //import { useParams } from 'react-router-dom';
 
 
   function get_list_menu() {
@@ -28,7 +28,7 @@
 
   export default function ProductProfile() {
 
-    const { productId } = useParams();
+    //const { productId } = useParams();
     const dataParam = new URLSearchParams(window.location.search).get('data');
     const data = dataParam ? JSON.parse(decodeURIComponent(dataParam)) : null;
     
@@ -62,11 +62,9 @@
 
 
 
-    const [isCollapseActive, setCollapseActive] = useState(false);
+    //const [isCollapseActive, setCollapseActive] = useState(false);
 
-    const toggleCollapse = () => {
-      setCollapseActive(!isCollapseActive);
-    };
+    //const toggleCollapse = () => {setCollapseActive(!isCollapseActive);};
 
 
     
@@ -266,7 +264,7 @@
                                           <img src={added} alt="Add Icon" className="icon" />
                                       </svg>
                                   </button>
-                                  <div class="_img"><img src={CTS} loading="lazy"/></div>
+                                  <div class="_img"><img src={CTS} alt='add' loading="lazy"/></div>
                               
                               <div className="_tag" style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                                   <div class="_size">
@@ -282,7 +280,7 @@
                               </div>
                           </a>
                       </div>
-                      /* Repeat similar blocks for other product items */
+                      
                   </div>
               </div>
           </div>
@@ -323,7 +321,7 @@
                               </div>
                           </a>
                       </div>
-                      /* Repeat similar blocks for other related product items */
+                     
                   </div>
               </div>
           </div>

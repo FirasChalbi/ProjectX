@@ -3,10 +3,10 @@ import numeral from 'numeral';
 import add from '../image/add.svg'
 import added from '../image/added.svg'
 import share from '../image/share.svg'
-import CTS from '../image/CTS.jpg';
+
 import CF from '../image/carrefour.svg';
 import MP from '../image/monoprix.svg';
-import AZ from '../image/aziza.jpg';
+
 import './item.css';
 
 export default function ProductContent({ index, productData }) {
@@ -98,7 +98,7 @@ export default function ProductContent({ index, productData }) {
                       data-store={productData.shop1Product.shop_name}
                       onClick={fypStoreClick}
                       target="_blank"
-                      
+                      rel="noreferrer"
                     >
                       <div className="_store_logo">
                         <img
@@ -117,7 +117,7 @@ export default function ProductContent({ index, productData }) {
                       data-store={productData.shop2Product.shop_name}
                       onClick={fypStoreClick}
                       target="_blank"
-                      
+                      rel="noreferrer"
                     >
                       <div className="_store_logo">
                         <img
