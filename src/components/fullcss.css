@@ -2,6 +2,44 @@
 /* ###############~~ BASE ELEMENTS ~~############### */
 /* http://smacss.com/book/type-base */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=block');
+/* hide elements except logo and search bar on mobile */
+@media (max-width: 600px) {
+  header {
+    height: 70px; /* adjust the height as needed */
+  }
+
+  header ._inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-gap: 10px;
+    max-width: 1700px;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+
+  header ._inner > *:not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)) {
+    display: none;
+  }
+
+  header .search-bar-outer {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* adjust the margin as needed */
+  }
+
+  header .search-bar {
+    width: 100%; /* adjust the width as needed */
+    display: flex;
+    align-items: center;
+  }
+
+  header .search-bar input {
+    margin: 0;
+  }
+}
+
 
 *{box-sizing: border-box;font-family:inherit;}
 html{font-size: 62.5%;scroll-behavior: smooth;}

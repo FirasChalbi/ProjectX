@@ -98,9 +98,7 @@ function Header() {
           </form>
         </div>
         <button className="search-button -hide-desktop" onClick={showSearch}>
-          <svg className="icon">
-            <use xlinkHref="#svg_search" />
-          </svg>
+          
         </button>
         <a className="list-button" href="/lists/">
         <img style={{ width: '35px', height: '35px' }} src={heart} alt="Add Icon" className="icon" />

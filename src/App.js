@@ -20,8 +20,9 @@ const App = () => {
         <Route path="/deals" element={<Deals />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <MobBar />
     </Router>
-    <MobBar />
+    
     </div>
     
   );
