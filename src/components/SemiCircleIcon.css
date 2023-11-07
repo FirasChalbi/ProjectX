@@ -1,0 +1,29 @@
+.semi-circle-container {
+  position: fixed;
+  width: 100px; /* Adjust the size of the semi-circle as needed */
+  height: 50px; /* Adjust the size of the semi-circle as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.semi-circle {
+  position: relative;
+  background-color: blueviolet;
+  
+  width: 0;
+  height: 0;
+}
+
+.semi-circle {
+  border-top: 50px solid transparent;
+  border-right: 100px solid #0000; /* Adjust the color of the semi-circle as needed */
+}
+
+.icon11 {
+  position: absolute;
+  color: white;
+  height: 30px;
+  width: 30px;
+}

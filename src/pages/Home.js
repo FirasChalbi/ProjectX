@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ProductContent from '../components/ProductItem'; // Import the ProductContent component
 import Sidebar from '../components/Sidebar';
+//import SemiCircleIcon from '../components/SemiCircleIcon';
+//import icon from '../image/discount.svg'
+
 
 function Home() {
   const [matchedProducts, setMatchedProducts] = useState([]);

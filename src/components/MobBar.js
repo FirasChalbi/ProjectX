@@ -13,7 +13,7 @@ function MobBar() {
       <Link to="/">
         <img src={homeImage} alt="Home Icon" style={{ height: "35px", width: "35px", marginTop:"7px" }} />
       </Link>
-      <Link to="/explore">
+      <Link to="/lists">
         <FontAwesomeIcon icon={faHeart} size='lg' color='black' />
       </Link>
       <Link to="/deals">
