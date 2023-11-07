@@ -5,6 +5,7 @@ import  Deals from './pages/Deals';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import ProductProfile from './components/ProductProfile';
+import MobBar from './components/MobBar';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
+    <MobBar />
     </div>
     
   );
