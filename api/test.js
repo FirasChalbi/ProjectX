@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require('cors');
 const axios = require('axios');
+const search = require('./routes/search');
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -20,6 +21,9 @@ app.use(cors());
 app.get('/api/test', (req, res) => {
   res.json(dataArray);
 });
+
+
+app.use('/api/search', search)
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

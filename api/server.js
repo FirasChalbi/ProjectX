@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const carrefourRoutes = require('./routes/carrefour');
 const monoprixRoutes = require('./routes/monoprix');
 const matchedRoutes = require('./routes/matchedProduct');
+const search = require('./routes/search');
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -24,7 +25,7 @@ db.once('open', () => {
 app.use('/api/carrefour/products', carrefourRoutes);
 app.use('/api/monoprix/products', monoprixRoutes);
 app.use('/api/match-products', matchedRoutes);
-
+app.use('/api/search', search)
 
 
 

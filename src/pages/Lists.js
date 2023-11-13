@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import newlist from '../image/newlist.png';
+import "./lists.css"
 
 function Lists() {
   const [isModalOpen, setIsModalOpen] = useState(false);

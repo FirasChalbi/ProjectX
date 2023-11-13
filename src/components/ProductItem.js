@@ -77,7 +77,27 @@ export default function ProductContent({ index, productData }) {
               <img className="prod-img" src={productData.shop1Product.imageSrc} alt={productData.shop1Product.imageSrc} />
             </div>
           </a>
+          
           <div className="product-items">
+          <div className="_item toolbar more pc-only">
+              <div className="js-add_to_list_menu" onClick={fypAddToList} data-id="CTS136" >
+                <button className="add"  style={{display:"flex", flexDirection:"column"}}>
+                  <div>
+                    <img style={{ marginTop: '5px',marginRight: "6px" }}  src={add} alt="Add Icon" className="icon" /> {/* Use the imported SVG */}
+                  </div>
+                  <div className='txt'>List</div>
+                </button>
+                <button className="added" >
+                  <div>
+                    <img src={added} alt="Add Icon" className="icon" /> {/* Use the imported SVG */}
+                  </div> <div className='txt'>List</div>
+                </button>
+              </div>
+              <button onClick={() => fypShare('/product/viakal-spray/CTS136', 'CTS136', 'Viakal Classic Limescale Remover Spray Bathroom Cleaning')} style={{display:"flex", flexDirection:"column"}}>
+              <img style={{ width: '35px', height: '35px' }} src={share} alt="Add Icon" className="icon" /> {/* Use the imported SVG */}
+              <div className='txt'>Share</div>
+              </button>
+            </div>
             <div className="_item -prod_names">
               <a href={`/product/viakal-spray/${productData.shop1Product.id}`} onClick={productClick} title={productData.shop1Product.name}>
                 {/* Product name and brand */}
@@ -174,7 +194,7 @@ export default function ProductContent({ index, productData }) {
                 <div className="-review" style={{ maxWidth: '650px' }}>“I love this it works great even on tough disgusting showers, it makes it clean straight away”</div>
               </div>
             </div>
-            <div className="_item toolbar">
+            <div className="_item toolbar mobile-only">
               <div className="js-add_to_list_menu" onClick={fypAddToList} data-id="CTS136">
                 <button className="add">
                   <div>

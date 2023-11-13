@@ -1,12 +1,16 @@
 import React from 'react';
-import logo from '../image/dlogo.png'
+import logo from '../image/logo.png'
 import user from '../image/user.png'
 import heart from '../image/heart.svg'
 import search from '../image/search.svg'
 import menu from '../image/menu.svg'
-import './fullcss.css'
+import './header.css'
+import { useState } from 'react';
 
 function Header() {
+
+  const [searchQuery, setSearchQuery] = useState('');
+
   const showSearch = () => {
     // Implement the logic to show the search.
     // For example, you can toggle a state variable to control visibility.
@@ -24,11 +28,31 @@ function Header() {
     console.log('Open App Modal');
   };
 
-  const code_red_search_query = (value) => {
-    // Implement the logic for handling the search query using CODE_RED.
-    // You may need to replace this with your actual implementation.
-    console.log('Search Query:', value);
+  const code_red_search_query = async (value) => {
+    try {
+      const response = await fetch(`http://localhost:4000/api/search?q=${encodeURIComponent(value)}`);
+  
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+  
+      const contentType = response.headers.get('content-type');
+  
+      if (contentType && contentType.includes('application/json')) {
+        const data = await response.json();
+        console.log('Search Results:', data);
+        // Handle the data, e.g., update state with search results
+      } else {
+        const nonJsonResponse = await response.text();
+        console.error('Unexpected response format. Expected JSON. Actual response:', nonJsonResponse);
+        // Handle non-JSON response (e.g., display an error message)
+      }
+    } catch (error) {
+      console.error('Error fetching search results:', error.message);
+    }
   };
+  
+  
 
   return (
     <header>
@@ -53,23 +77,24 @@ function Header() {
         <div>
           <a href="/">
             <img
-              style={{ display: 'block', width: '70px' }}
+              
               src={logo}
               alt=""
+              className='logo'
             />
           </a>
         </div>
         <div className="search-bar-outer">
           <form
-            className=" -show-desktop"
-            method="get"
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (this.q.value === '') return false;
-              code_red_search_query(this.q.value);
-            }}
-            action="/search/"
-          >
+          className=" -show-desktop"
+          method="get"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (searchQuery === '') return;
+            code_red_search_query(searchQuery);
+          }}
+          action="/search/"
+        >
             <input type="hidden" name="from" value="search" />
             <label htmlFor="searchInput" className="search-bar -relative">
             <img style={{ width: '19px', height: '19px' }} src={search} alt="Add Icon" className="icon" />
@@ -77,23 +102,19 @@ function Header() {
                 <input
                   id="searchInput"
                   type="text"
-                  placeholder="Search for a product or brand"
+                  placeholder="Search for a product"
                   name="q"
                   autoComplete="off"
                   autoCapitalize="none"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <div className="suggestions"></div>
               </div>
-              <button className="_close-button -hide">
-                <svg className="icon">
-                  <use xlinkHref="#svg_close" />
-                </svg>
-              </button>
-              <button className="_barcode-button">
-                <svg className="icon">
-                  <use xlinkHref="#svg_barcode" />
-                </svg>
-              </button>
+              {/*<button className="_close-button -hide" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path d="M4 16v-8h2v8h-2zm12 0v-8h2v8h-2zm-9 0v-8h1v8h-1zm2 0v-8h2v8h-2zm3 0v-8h1v8h-1zm2 0v-8h1v8h-1zm5 0v-8h1v8h-1zm-1-10h4v4h2v-6h-6v2zm-16 4v-4h4v-2h-6v6h2zm4 8h-4v-4h-2v6h6v-2zm16-4v4h-4v2h6v-6h-2z"/></svg>
+              </button> */}
+             
             </label>
           </form>
         </div>
