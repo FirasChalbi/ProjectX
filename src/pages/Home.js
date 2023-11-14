@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductContent from '../components/ProductItem';
 import Sidebar from '../components/Sidebar';
+import { TopDeals } from '../components/TopDeals';
 
 
 function Home() {
@@ -69,6 +70,7 @@ function Home() {
             alignItems: 'center',
           }}
         >
+          <TopDeals />
           {displayedProducts.map((product, index) => (
             <ProductContent key={index} index={index + 1} productData={product} />
           ))}

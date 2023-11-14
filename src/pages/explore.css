@@ -45,13 +45,3 @@ h3{color:#000;}
 @media(max-width:700px) {
 	.sidebar.-active {position: sticky;}
 }
-
-.store-items{display: grid;grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));gap:15px;align-items: center;justify-content: flex-start;}
-.store-items > .item{cursor:pointer;height:120px;border:1px solid #ddd;display:flex;justify-content:center;align-items:center;padding:15px;}
-.store-items > .item:hover, .store-items > .item.-active{background:#eeeff0;}
-.store-items > .item > svg{zoom:1.2;}
-@media(max-width:700px) {
-	.sidebar.-active {position: sticky;}
-	.store-items{display:flex;grid-template-columns:unset;gap:15px;align-items: center;flex-direction: row;}
-	.store-items > .item{min-width:140px;}
-}
