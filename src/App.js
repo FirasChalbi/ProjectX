@@ -7,6 +7,7 @@ import Header from './components/Header';
 import ProductProfile from './components/ProductProfile';
 import MobBar from './components/MobBar';
 import Lists from './pages/Lists';
+import { MobileMenu } from './pages/MobileMenu';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/explore" element={<Explore />} />
         <Route path="/deals" element={<Deals />} />
         <Route path="/lists" element={<Lists />} />
+        <Route path="/Menu" element={<MobileMenu />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       

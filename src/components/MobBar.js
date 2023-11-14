@@ -16,7 +16,7 @@ function MobBar() {
       <Link to="/lists">
         <FontAwesomeIcon icon={faHeart} size='lg' color='black' />
       </Link>
-      <Link to="/deals">
+      <Link to="/Menu">
         <FontAwesomeIcon icon={faBars} color='black'/>
       </Link>
     </div>

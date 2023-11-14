@@ -1,0 +1,35 @@
+.mobile-Menu{
+    width: max-content;
+}
+
+.menuRow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    
+}
+
+.menu-item {
+    
+    width: 100%;
+    height: 55px;
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: left;
+    
+    color: #333; /* Adjust the color according to your design */
+    border-bottom: 1px solid #ccc; /* Add a border bottom to create a line */
+  }
+  .menu-item:last-child {
+    /* Remove the border bottom from the last menu item */
+    border-bottom: none;
+  }
+  
+  .menu-item:hover {
+    /* Add styling for the hover effect on menu items */
+    background-color: #eee; /* Adjust the background color on hover */
+  }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import newlist from '../image/newlist.png';
+import pixel from '../image/pixel.gif';
 import "./lists.css"
 
 function Lists() {
@@ -48,7 +49,7 @@ function Lists() {
                 >
                   <div className="_folder-imgs -empty-list">
                     <div className="_blank">
-                      <img src="/imgs/dead-pixel.gif" alt="New List" />
+                      <img src={pixel} alt="New List" />
                     </div>
                   </div>
                   <div className="_name">{list.name}</div>
