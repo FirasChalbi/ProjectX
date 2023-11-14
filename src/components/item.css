@@ -127,13 +127,15 @@
     width: 100%;
 }
 .product-content ._item {
-    border-bottom: 1px solid #efefef;
-    padding: 15px 0;
-    width: 100%
+    border-bottom: none;
+    width: 100%;
+    margin-bottom: 1%;
+    
 }
 
 .product-content ._item:first-child {
-    margin-top: 3px;
+    margin-top: -20px;
+    height: 50px;
 }
 
 .product-content ._item:last-child {
@@ -724,7 +726,7 @@
     }
     
     .product-content ._title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
     
     .product-content .store-logo {
@@ -733,6 +735,7 @@
     
     .product-content ._stores {
         flex-direction:row;
+        margin-bottom: -15px;
     }
     
     .product-content ._stores ._store_logo {
@@ -762,11 +765,12 @@
     }
     
     .product-content ._brand {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
-    
+
     .product-content .tag {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        margin-bottom: -15px;
     }
     
     .store-logo.-waitrose {
