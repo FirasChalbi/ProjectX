@@ -1,7 +1,9 @@
 .product-toolbar2 {
+  display: flex;
+  flex-direction: row;
+  height: 70px;
   max-width: 280px;
   margin: auto;
-  justify-content: start;
   grid-gap: 10px;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -17,6 +19,7 @@
 
 .product-toolbar2 .js-add_to_list_menu.-active .added {
   display: flex;
+  
 }
 
 .product-toolbar2 button {

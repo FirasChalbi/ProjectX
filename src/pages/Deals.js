@@ -7,7 +7,7 @@ function MatchedProducts() {
 
   useEffect(() => {
     // Make an HTTP request to your Node.js server endpoint
-    fetch('https://barkaa-service.onrender.com/api/test') // Update the endpoint as needed
+    fetch('https://barkaa-service.onrender.com/api/match-products') // Update the endpoint as needed
       .then((response) => response.json())
       .then((data) => {
         setMatchedProducts(data);

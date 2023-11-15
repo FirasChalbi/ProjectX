@@ -10,9 +10,9 @@
   //import { useParams } from 'react-router-dom';
 
 
-  function get_list_menu() {
+  /*function get_list_menu() {
       // Your implementation here
-    }
+    }*/
     
     function gtag() {
       // Your implementation here
@@ -33,14 +33,14 @@
     const data = dataParam ? JSON.parse(decodeURIComponent(dataParam)) : null;
     
 
-    const handleAddToList = () => {
+    /*const handleAddToList = () => {
       get_list_menu(this);
       gtag('event', 'click', {
         event_category: 'Product Page Lists',
         event_action: 'Clicked Add To List',
         event_label: 'Location - Product Page - Picture'
       });
-    };
+    };*/
 
     const handleShareProduct = () => {
       share_product();
@@ -95,31 +95,26 @@
 
           <div className="tile" style={{ position: 'relative' }}>
             <div className="product-toolbar product-toolbar2">
-              <div className="js-add_to_list_menu" onClick={handleAddToList} data-id="ITN751">
+              
                 <button className="add">
-                  <div>
-                    <svg className="icon">
-                      <use xlinkHref="#svg_add"></use>
-                    </svg>
-                  </div> List
+                    <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
+                     List
                 </button>
+                {/*<div className="js-add_to_list_menu" onClick={handleAddToList} data-id="ITN751">
                 <button className="added">
                   <div>
                     <svg className="icon">
                       <use xlinkHref="#svg_added"></use>
                     </svg>
                   </div> List
-                </button>
-              </div>
+                  </button>
+                  </div>*/}
+              
               <button onClick={handleShareProduct}>
-                <svg className="icon">
-                  <use xlinkHref="#svg_share"></use>
-                </svg> Share
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 24 24"><path d="M5 7c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5zm11.122 12.065c-.073.301-.122.611-.122.935 0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4c-1.165 0-2.204.506-2.935 1.301l-5.488-2.927c-.23.636-.549 1.229-.943 1.764l5.488 2.927zm7.878-15.065c0-2.209-1.791-4-4-4s-4 1.791-4 4c0 .324.049.634.122.935l-5.488 2.927c.395.535.713 1.127.943 1.764l5.488-2.927c.731.795 1.77 1.301 2.935 1.301 2.209 0 4-1.791 4-4z"/></svg> Share
               </button>
               <button onClick={handleReportProduct}>
-                <svg className="icon">
-                  <use xlinkHref="#svg_flag"></use>
-                </svg> Report
+              <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17.246 4.042c-3.36 0-3.436-2.895-7.337-2.895-2.108 0-4.075.98-4.909 1.694v-2.841h-2v24h2v-9.073c1.184-.819 2.979-1.681 4.923-1.681 3.684 0 4.201 2.754 7.484 2.754 2.122 0 3.593-1.359 3.593-1.359v-12.028s-1.621 1.429-3.754 1.429zm1.754 9.544c-.4.207-.959.414-1.593.414-.972 0-1.498-.363-2.371-.964-1.096-.755-2.596-1.79-5.113-1.79-1.979 0-3.71.679-4.923 1.339v-7.488c1.019-.902 2.865-1.949 4.909-1.949 1.333 0 1.894.439 2.741 1.103.966.756 2.288 1.792 4.596 1.792.627 0 1.215-.086 1.754-.223v7.766z"/></svg> Report
               </button>
             </div>
           </div>

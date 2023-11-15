@@ -13,7 +13,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://barkaa-service.onrender.com/api/test');
+        const response = await fetch('https://barkaa-service.onrender.com/api/match-products');
         const data = await response.json();
         setAllProducts(data);
         setLoading(false);

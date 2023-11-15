@@ -1,3 +1,4 @@
+
 .-scrollable {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -43,13 +44,28 @@ h3{color:#000;}
 	.store-items > .item{min-width:140px;}
 }
 
-  .containerr  {
-    overflow: auto;
-    white-space:nowrap;
-    width: 350px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    scrollbar-width: none;
-    -webkit-scrollbar: none;
+  
+  @media(max-width:700px) {
+    .containerr  {
+      overflow: auto;
+      white-space:nowrap;
+      width: 350px;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -webkit-scrollbar: none;
+    }  
   }
+
+  @media (min-width: 768px) {
+    .top {
+      display: flex;
+      justify-self: flex-end;
+      flex-direction: column;
+      width: 900px;
+      margin-left: -90px;
+    }
+  }
+  
+
