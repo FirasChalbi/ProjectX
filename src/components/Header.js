@@ -25,7 +25,7 @@ function Header() {
 
   const code_red_search_query = async (value) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/search?q=${encodeURIComponent(value)}`);
+      const response = await fetch(`http://barkaa-service.onrender.com/api/search?q=${encodeURIComponent(value)}`);
 
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
