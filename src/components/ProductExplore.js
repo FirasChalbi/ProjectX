@@ -1,6 +1,6 @@
 import React from 'react';
 import './productExplore.css'
-import add from '../image/add.svg'
+
 
 function ProductItem({ productData }) {
   const get_list_menu = (target) => {
