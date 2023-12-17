@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ProductItem from '../components/ProductExplore';
+import ProductExplore from '../components/ProductExplore';
 import './explore.css'
 import Sidebar from '../components/Sidebar';
 
@@ -39,7 +39,7 @@ function MatchedProducts() {
     <div className='products-grid'> 
         {matchedProducts.map((product, index) => (
           
-            <ProductItem key={product.shop1Product._id} index={index + 1} productData={product} />
+            <ProductExplore key={product.shop1Product._id} index={index + 1} productData={product} />
           
         ))}
     </div>

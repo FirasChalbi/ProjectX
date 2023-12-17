@@ -38,6 +38,6 @@ const matchedProductSchema = new mongoose.Schema({
   similarityScoreBrand: Number,
 });
 
-const MatchedProduct = mongoose.model('MatchedProduct', matchedProductSchema, 'MatchedProducts');
+const MatchedProducts = mongoose.model('MatchedProducts', matchedProductSchema, 'MatchedProducts');
 
-module.exports = MatchedProduct;
+module.exports = MatchedProducts;

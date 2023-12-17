@@ -99,7 +99,7 @@ export default function ProductContent({ index, productData }) {
               </button>
             </div>
             <div className="_item -prod_names">
-              <a href={`/product/viakal-spray/${productData.shop1Product.id}`} onClick={productClick} title={productData.shop1Product.name}>
+              <a href={`/product/${productData.shop1Product._id}?data=${encodedData}`} onClick={productClick} title={productData.shop1Product.name}>
                 {/* Product name and brand */}
                 <div className="_brand">{productData.shop1Product.brand}</div>
                 <div className="_title">{productData.shop1Product.name}</div>

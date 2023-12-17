@@ -8,14 +8,16 @@ import ProductProfile from './components/ProductProfile';
 import MobBar from './components/MobBar';
 import Lists from './pages/Lists';
 import { MobileMenu } from './pages/MobileMenu';
+import { Search } from './pages/Search';
 
 
 const App = () => {
   return (
     <div className='App'>
-    <Header />
+    
     
     <Router>
+    <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:productId" element={<ProductProfile />} />
@@ -23,6 +25,7 @@ const App = () => {
         <Route path="/deals" element={<Deals />} />
         <Route path="/lists" element={<Lists />} />
         <Route path="/Menu" element={<MobileMenu />} />
+        <Route path="/search" element={<Search />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       
