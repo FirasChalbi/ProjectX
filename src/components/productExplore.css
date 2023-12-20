@@ -1,3 +1,48 @@
+:root {
+    --star-size: 20px;
+    --star-color: #fff;
+    --star-background: #fc0;
+  }
+  
+  .Stars {
+    --percent: calc(var(--rating) / 5 * 100%);
+    
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times;
+    line-height: 1;
+    
+    &::before {
+      content: '★★★★★';
+      letter-spacing: -2px;
+      background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+
+.product-item ._img .imgprod{
+    max-width: 200px;
+    width: 100%;
+    margin: auto;
+    display: block;
+    aspect-ratio: 1;
+    padding-top: 1px!important;
+    padding: 1px;
+}
+@media (max-width: 800px) {
+    .product-item ._img .imgprod{
+        max-width: 200px;
+        width: 100%;
+        margin: auto;
+        display: block;
+        aspect-ratio: 1;
+        padding-top: 1px!important;
+        padding: 1px;
+    }
+}
+
 .tile > div {
     padding: 10px 0;
 }

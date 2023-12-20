@@ -9,6 +9,7 @@ import MobBar from './components/MobBar';
 import Lists from './pages/Lists';
 import { MobileMenu } from './pages/MobileMenu';
 import { Search } from './pages/Search';
+import Signin from './pages/Signin';
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/lists" element={<Lists />} />
         <Route path="/Menu" element={<MobileMenu />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/signin" element={<Signin />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       
