@@ -88,7 +88,7 @@
               </div>
             </div>
             <div className="_img">
-              <img src={data.shop1Product.imageSrc} alt="Product" style={{height:"500px", width:"500px", marginTop:"-25%"}} />
+              <img src={data.shop1Product.imageSrc} alt="Product" style={{height:"400px", width:"300px", marginTop:"-25%", padding:"1px"}} />
             </div>
           </div>
           
@@ -270,7 +270,7 @@
                                   <div class="_brand">L'Oreal</div>
                                   <div class="_desc">Elvive Nutri-Gloss Shine Dull Hair Shampoo</div>
                                   <div class="_price">
-                                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}></div> £3.50 <div class="_per-item">£0.70 per 100ml <br/></div>
+                                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}></div> 1 DT <div class="_per-item">1 DT per 100ml <br/></div>
                                   </div>
                               </div>
                           </a>
@@ -311,7 +311,7 @@
                                   <div class="_brand">Argan+</div>
                                   <div class="_desc">Shine Shampoo</div>
                                   <div class="_price">
-                                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}></div> £4.16 <div class="_per-item">£1.39 per 100ml <br/></div>
+                                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}></div> 1 DT <div class="_per-item">1 DT per 100ml <br/></div>
                                   </div>
                               </div>
                           </a>
