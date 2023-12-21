@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import imgSvg from '../image/img.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars  } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -16,9 +16,15 @@ function MobBar() {
       <Link to="/lists">
         <FontAwesomeIcon icon={faHeart} size='lg' color='black' />
       </Link>
+      <Link to="/Deals">
+      <svg className="icon">
+        <use xlinkHref={`${imgSvg}#svg_deals`} />
+      </svg>
+      </Link>
       <Link to="/Menu">
         <FontAwesomeIcon icon={faBars} color='black'/>
       </Link>
+      
     </div>
   );
 }

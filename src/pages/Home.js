@@ -70,7 +70,7 @@ function Home() {
             alignItems: 'center',
           }}
         >
-          <TopDeals />
+          <TopDeals titre={"Today's Top Deals"} />
           {displayedProducts.map((product, index) => (
             <ProductContent key={index} index={index + 1} productData={product} />
           ))}
