@@ -14,6 +14,10 @@ const listsRoutes = require('./routes/lists');
 const app = express();
 const port = process.env.PORT || 4000;
 
+app.use((req, res, next) => {
+    res.header('Cross-Origin-Opener-Policy', 'same-origin; same-origin-allow-popups');
+    next();
+  });
 app.use(cors());
 app.use(express.json());
 app.use(session({
@@ -21,6 +25,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
+
 
 // Initialize Passport and restore authentication state from session
 app.use(passport.initialize());
