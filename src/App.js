@@ -10,6 +10,7 @@ import Lists from './pages/Lists';
 import { MobileMenu } from './pages/MobileMenu';
 import { Search } from './pages/Search';
 import Signin from './pages/Signin';
+import ListDetails from './pages/ListDetails';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/explore" element={<Explore />} />
         <Route path="/deals" element={<Deals />} />
         <Route path="/lists" element={<Lists />} />
+        <Route path="/lists/:id" element={<ListDetails />} />
         <Route path="/Menu" element={<MobileMenu />} />
         <Route path="/search" element={<Search />} />
         <Route path="/signin" element={<Signin />} />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import newlist from '../image/newlist.png';
 import pixel from '../image/pixel.gif';
 import "./lists.css"
@@ -42,11 +43,7 @@ function Lists() {
           <div>
             <div className="folders-grid">
               {lists.map((list) => (
-                <a
-                  key={list.id}
-                  href={`/lists/?open=${list.id}`}
-                  className="folder-item"
-                >
+                <Link to={`/lists/${list.id}`} className="folder-item">
                   <div className="_folder-imgs -empty-list">
                     <div className="_blank">
                       <img src={pixel} alt="New List" />
@@ -56,7 +53,7 @@ function Lists() {
                   <div className="flow-items -space-between">
                     <div className="_count">No items</div>
                   </div>
-                </a>
+                  </Link>
               ))}
               <div className="folder-item _add_item" onClick={toggleModal}>
                 <div className="_folder-imgs -empty-list">
