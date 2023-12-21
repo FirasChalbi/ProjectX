@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './signin.css';
 import { Link } from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
+
 
 const Signin = () => {
   const [email, setEmail] = useState('');
@@ -31,7 +31,7 @@ const Signin = () => {
       console.error('Error during sign-in:', error.message);
     }
   };
-
+/*
   const responseGoogle = async (response) => {
     try {
       // Send the Google sign-in response to your backend for verification
@@ -54,7 +54,7 @@ const Signin = () => {
       console.error('Error during Google sign-in verification:', error.message);
     }
   };
-  
+  */
 
   return (
     <div className="modal-parent" id="modal_cn" style={{ maxWidth: '600px', margin: 'auto' }}>
@@ -132,13 +132,7 @@ const Signin = () => {
           </div>
           <div className="account_social-buttons -col-2 -grid-gap-10">
             {/* Google Sign-In Button */}
-            <GoogleLogin
-              clientId="206715908451-sp66t76rpkg3v79pn96c4rs8h46cv80j.apps.googleusercontent.com"
-              buttonText="Continue with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
+           
             {/* Other social buttons */}
             
           </div>
