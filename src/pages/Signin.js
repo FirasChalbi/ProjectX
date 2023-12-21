@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './signin.css';
-import { Link } from 'react-router-dom';        
-
-
+import { Link } from 'react-router-dom';
 
 const Signin = () => {
-  const handleSignIn = (event) => {
-    // Handle form submission logic here
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignIn = async (event) => {
     event.preventDefault();
-    // Add your logic for handling form submission, e.g., calling an authentication API
+
+    try {
+      const response = await fetch('http://localhost:4000/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        // Redirect or perform other actions upon successful sign-in
+        console.log('Successfully signed in!');
+      } else {
+        const data = await response.json();
+        // Handle authentication error, e.g., display an error message
+        console.error('Sign-in failed:', data.message);
+      }
+    } catch (error) {
+      console.error('Error during sign-in:', error.message);
+    }
   };
 
   return (
@@ -16,10 +36,20 @@ const Signin = () => {
       <section>
         <div className="tile">
           <div className="account_login-form">
-          <h3>Let's get you back in</h3>
-            <form method="post" action="/account/sign-in/?modal=1" onSubmit={handleSignIn}>
+            <h3>Let's get you back in</h3>
+            <form onSubmit={handleSignIn}>
               <div>
-                <input type="email" className="input" id="email" name="email" size="30" required placeholder="Email" />
+                <input
+                  type="email"
+                  className="input"
+                  id="email"
+                  name="email"
+                  size="30"
+                  required
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div className="-relative">
                 <input
@@ -30,8 +60,10 @@ const Signin = () => {
                   required
                   placeholder="Password"
                   className="input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-                <a className="_forgot-password" href="/account/sign-in/forgot-password/">
+                <a className="_forgot-password" href="http://localhost:4000/account/sign-in/forgot-password/">
                   Forgot?
                 </a>
               </div>
@@ -48,7 +80,7 @@ const Signin = () => {
                 </Link>
               </div>
             </form>
-          </div>
+            </div>
           <div className="account_social-buttons -col-2 -grid-gap-10">
             <a className="cta -bg-transparent -border-grey -color-black -google" href="?redirect=&amp;login=Google" target="_top">
               <svg className="icon">
