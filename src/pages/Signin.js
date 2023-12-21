@@ -11,7 +11,7 @@ const Signin = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/api/auth/signin', {
+      const response = await fetch('https://barkaa-service.onrender.com/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const Signin = () => {
   const responseGoogle = async (response) => {
     try {
       // Send the Google sign-in response to your backend for verification
-      const backendResponse = await fetch('http://localhost:4000/api/auth/google/verify', {
+      const backendResponse = await fetch('https://barkaa-service.onrender.com/api/auth/google/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
