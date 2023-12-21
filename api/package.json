@@ -16,6 +16,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "fuzzball": "^2.1.2",
+    "hasown": "^2.0.0",
     "lru-cache": "4.1.5",
     "mongoose": "^7.4.4",
     "netlify-lambda": "^2.0.16",
