@@ -21,7 +21,7 @@ function MatchedProducts() {
   }, []); // The empty dependency array means this effect runs once on component mount
 */
   return (
-    <div style={{paddingLeft:'20'}}>
+    <div style={{paddingLeft:'20px'}}>
         <TopDeals titre="Filter by store" />
         <div className='containerr store-items -scrollable' style={{ gap: '10px', marginTop: "30px"}}>
         <h2>Daily Deals</h2>

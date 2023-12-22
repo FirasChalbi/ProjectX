@@ -18,7 +18,7 @@ export const TopDeals = ( {titre} ) => {
 
   return (
     <div className='top'>
-      <div className='containerr store-items -scrollable' style={{ gap: '10px', marginTop: "30px"}}>
+      <div className='containerr store-items -scrollable' style={{ gap: '10px', marginTop: "20px"}}>
         <h2>{titre}</h2>
       </div>
       <div style={{ margin: '20px 0 40px' }}>

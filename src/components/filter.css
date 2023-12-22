@@ -1,3 +1,4 @@
+
 #filter_form{
     transition: opacity 300ms ease;
     opacity:0;
@@ -183,10 +184,11 @@
     }
      .filter-menu .option-item-wrapper{
          max-height:360px;
-         overflow: auto;
+         
     }
      .filter-menu .close-bar {
          display: flex;
+         
     }
      .filter-menu ._option-item label div{
         font-size: 1.5rem;
@@ -199,7 +201,8 @@
         height: 0
     }
      .filter-menu ._option-item label{
-         padding: 15px 20px;
+         padding: 30px 20px;
+         height: 40px;
     }
      .filter-menu ._filter-button{
         font-size:1.5rem;
@@ -235,6 +238,7 @@
     width: 100%;
     padding: 5px;
 }
+
  .apply-all-searches{
     padding:10px 20px;
     position:sticky;
@@ -262,9 +266,15 @@
     }
      .filter-menu ._filter-button{
         border:0!important;
+        width: 100%;
     }
      .filter-menu ._filter-button.apply-all-searches{
         padding:20px 30px 3px;
         border-top: 1px solid #eee!important;
     }
+}
+@media (max-width: 768px){
+._item {
+    margin-bottom: 1px;
+}
 }

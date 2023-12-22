@@ -6,6 +6,7 @@ import heart from '../image/heart.svg';
 import search from '../image/search.svg';
 import menu from '../image/menu.svg';
 import './header.css';
+import imgSvg from '../image/img.svg';
 
 function Header() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -101,6 +102,12 @@ function Header() {
                 />
                 <div className="suggestions"></div>
               </div>
+              {/* Add the button to the right of the search input */}
+              <button type="button" className="_barcode-button" onClick={app_modal}>
+                <svg className="icon">
+                  <use xlinkHref={`${imgSvg}#svg_barcode`} />
+                </svg>
+              </button>
             </label>
           </form>
         </div>
