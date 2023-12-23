@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import newlist from '../image/newlist.png';
 import pixel from '../image/pixel.gif';
-import "./lists.css"
+import ProductItem from '../components/ProductItem'; // Make sure to import the ProductItem component
+import "./lists.css";
 
 function Lists() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [listName, setListName] = useState('');
   const [lists, setLists] = useState([]);
+  const [listItems, setListItems] = useState([]); // Assuming you have a list of items
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -30,8 +32,11 @@ function Lists() {
       setIsModalOpen(false);
     }
   };
-
-  //const checkEnter = (e) => {if (e.key === 'Enter') {handleCreateList(e);}};
+  setListItems({d:'d'})
+  const handleAddToProduct = (productId, productName) => {
+    // Handle adding the product to the list
+    console.log(`Adding product ${productName} with ID ${productId} to the list.`);
+  };
 
   return (
     <div className="parent">
@@ -43,7 +48,7 @@ function Lists() {
           <div>
             <div className="folders-grid">
               {lists.map((list) => (
-                <Link to={`/lists/${list.id}`} className="folder-item">
+                <Link to={`/lists/${list.id}`} className="folder-item" key={list.id}>
                   <div className="_folder-imgs -empty-list">
                     <div className="_blank">
                       <img src={pixel} alt="New List" />
@@ -53,7 +58,14 @@ function Lists() {
                   <div className="flow-items -space-between">
                     <div className="_count">No items</div>
                   </div>
-                  </Link>
+                </Link>
+              ))}
+              {listItems.map((item) => (
+                <ProductItem
+                  key={item.id}
+                  productData={item}
+                  onAddToProduct={handleAddToProduct}
+                />
               ))}
               <div className="folder-item _add_item" onClick={toggleModal}>
                 <div className="_folder-imgs -empty-list">
@@ -117,7 +129,9 @@ function Lists() {
                   height="24"
                   onClick={toggleModal}
                   style={{ cursor: 'pointer' }}
-                ><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
+                >
+                  <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
+                </svg>
               </div>
               <div className="_form">
                 <img id="icon" src={newlist} alt="New List Icon" />

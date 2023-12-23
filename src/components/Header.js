@@ -4,7 +4,6 @@ import logo from '../image/logo.png';
 import user from '../image/user.png';
 import heart from '../image/heart.svg';
 import search from '../image/search.svg';
-import menu from '../image/menu.svg';
 import './header.css';
 import imgSvg from '../image/img.svg';
 
@@ -54,7 +53,7 @@ function Header() {
     <header>
       <div className="_inner">
         <button className="js-open-menu">
-          <img style={{ width: '30px', height: '30px' }} src={menu} alt="Menu Icon" className="icon" />
+          
           <menu id="headerMenu" className="">
             <a href="/deals/" className="_item">
               Today's Deals

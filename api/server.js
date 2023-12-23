@@ -49,7 +49,7 @@ passport.use(
     {
       clientID: '206715908451-sp66t76rpkg3v79pn96c4rs8h46cv80j.apps.googleusercontent.com',
       clientSecret: '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',
-      callbackURL: 'https://barkaa-service.onrender.com/auth/google/callback',
+      callbackURL: 'http://localhost:4000/auth/google/callback',
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
