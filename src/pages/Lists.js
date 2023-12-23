@@ -9,6 +9,7 @@ function Lists() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [listName, setListName] = useState('');
   const [lists, setLists] = useState([]);
+  // eslint-disable-next-line
   const [listItems, setListItems] = useState([]); // Assuming you have a list of items
 
   const toggleModal = () => {
@@ -32,12 +33,12 @@ function Lists() {
       setIsModalOpen(false);
     }
   };
-  setListItems({d:'d'})
+
   const handleAddToProduct = (productId, productName) => {
     // Handle adding the product to the list
     console.log(`Adding product ${productName} with ID ${productId} to the list.`);
   };
-
+  
   return (
     <div className="parent">
       <section id="folder_section">
