@@ -92,7 +92,7 @@ const Signin = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <a className="_forgot-password" href="https://barkaa-service.onrender.com/account/sign-in/forgot-password/">
+                <a className="_forgot-password" href="http://localhost:4000/account/sign-in/forgot-password/">
                   Forgot?
                 </a>
               </div>
