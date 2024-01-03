@@ -16,12 +16,15 @@ const User = require('./models/User'); // Import the User model
 const app = express();
 const port = process.env.PORT || 4000;
 
+const allowedOrigins = ['https://barkaa.netlify.app'];
+
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: allowedOrigins,
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(
   session({
