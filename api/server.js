@@ -20,10 +20,17 @@ const allowedOrigins = ['http://localhost:3000', 'https://barkaa.netlify.app'];
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
+
 
 app.use(express.json());
 app.use(
@@ -132,5 +139,5 @@ app.use('/api/match-products', matchedRoutesV2);
 app.use('/api/search', search);
 
 app.listen(port, () => {
-  console.log(`MYn Server is running on ${port}`);
+  console.log(`MY Server is running on ${port}`);
 });
