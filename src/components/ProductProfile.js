@@ -1,4 +1,4 @@
-  import React from 'react';
+  import {React, useState} from 'react';
   import './profile.css';
   import add from '../image/add.svg'
   import added from '../image/added.svg'
@@ -10,64 +10,109 @@
   //import { useParams } from 'react-router-dom';
 
 
-  /*function get_list_menu() {
-      // Your implementation here
-    }*/
-    
-    function gtag() {
-      // Your implementation here
-    }
-    
-    function share_product() {
-      // Your implementation here
-    }
-    
-    function report_product() {
-      // Your implementation here
-    }
-
+  
   export default function ProductProfile() {
-
-    //const { productId } = useParams();
     const dataParam = new URLSearchParams(window.location.search).get('data');
-    const data = dataParam ? JSON.parse(decodeURIComponent(dataParam)) : null;
-    
-
-    /*const handleAddToList = () => {
-      get_list_menu(this);
-      gtag('event', 'click', {
-        event_category: 'Product Page Lists',
-        event_action: 'Clicked Add To List',
-        event_label: 'Location - Product Page - Picture'
-      });
-    };*/
-
+    const data = dataParam ? JSON.parse(decodeURIComponent(encodeURIComponent(dataParam))) : null;
+     // eslint-disable-next-line
+    const [isLoading, setIsLoading] = useState(false);
+    const [isAddedToList, setIsAddedToList] = useState(false);
+  
+    const onAddToProduct = async (productData, listId) => {
+      try {
+        const productId = productData._id;
+  
+        if (!productId) {
+          console.error('Product ID is null or undefined.');
+          return;
+        }
+  
+        setIsLoading(true);
+  
+        const response = await fetch(`https://barkaa-service.onrender.com/api/lists/${listId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            productId: productData._id,
+          }),
+          credentials: 'include',
+        });
+  
+        if (!response.ok) {
+          console.error('Error adding product to list:', response.statusText);
+          return;
+        }
+  
+        console.log('Product added to list:', response);
+        console.log('Adding product to list:', productData, 'List ID:', listId);
+      } catch (error) {
+        console.error('Error adding product to list:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+  
+    const handleAddToList = async (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+  
+      const list = await get_list_menu(event.target);
+  
+      if (list) {
+        onAddToProduct(data, list._id);
+        setIsAddedToList(true);
+      }
+    };
+  
+    const get_list_menu = async (target) => {
+      try {
+        const response = await fetch('https://barkaa-service.onrender.com/api/lists', {
+          credentials: 'include',
+        });
+  
+        if (!response.ok) {
+          console.error('Error fetching lists:', response.statusText);
+          return null;
+        }
+  
+        const lists = await response.json();
+  
+        if (lists.length === 0) {
+          const createListConfirmation = window.confirm('You have no lists. Do you want to create one?');
+          if (createListConfirmation) {
+            // Implement logic to create a new list
+          }
+          return null;
+        } else {
+          const selectedList = window.prompt('You have multiple lists. Enter the name of the list to add the product:');
+          if (selectedList === null) {
+            return null;
+          }
+  
+          const matchingList = lists.find((list) => list.name === selectedList);
+          if (matchingList) {
+            return matchingList;
+          } else {
+            alert('List not found. Please enter a valid list name.');
+            return null;
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching lists:', error);
+        return null;
+      }
+    };
+  
     const handleShareProduct = () => {
-      share_product();
-      gtag('event', 'click', {
-        event_category: 'Product Page Share',
-        event_action: 'Clicked Share',
-        event_label: 'Location - Product Page - Picture'
-      });
+      // Your implementation here
     };
-
+  
     const handleReportProduct = () => {
-      report_product();
-      gtag('event', 'click', {
-        event_category: 'Product Page Report',
-        event_action: 'Clicked Report',
-        event_label: 'Location - Product Page - Below Picture'
-      });
+      // Your implementation here
     };
 
-
-
-    //const [isCollapseActive, setCollapseActive] = useState(false);
-
-    //const toggleCollapse = () => {setCollapseActive(!isCollapseActive);};
-
-
-    
 
     return (
       <div class="parent product-profile">
@@ -95,21 +140,18 @@
 
           <div className="tile" style={{ position: 'relative' }}>
             <div className="product-toolbar product-toolbar2">
-              
-                <button className="add">
-                    <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-                     List
-                </button>
-                {/*<div className="js-add_to_list_menu" onClick={handleAddToList} data-id="ITN751">
-                <button className="added">
-                  <div>
-                    <svg className="icon">
-                      <use xlinkHref="#svg_added"></use>
-                    </svg>
-                  </div> List
-                  </button>
-                  </div>*/}
-              
+            <button className={`add ${isAddedToList ? 'hidden' : ''}`} onClick={handleAddToList}>
+                <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z" />
+                </svg>
+                List
+              </button>
+              <button className={`added ${isAddedToList ? 'visible' : 'hidden'}`}>
+                <svg className="icon">
+                  <use xlinkHref="#svg_added"></use>
+                </svg>
+                List
+              </button>
               <button onClick={handleShareProduct}>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 24 24"><path d="M5 7c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5zm11.122 12.065c-.073.301-.122.611-.122.935 0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4c-1.165 0-2.204.506-2.935 1.301l-5.488-2.927c-.23.636-.549 1.229-.943 1.764l5.488 2.927zm7.878-15.065c0-2.209-1.791-4-4-4s-4 1.791-4 4c0 .324.049.634.122.935l-5.488 2.927c.395.535.713 1.127.943 1.764l5.488-2.927c.731.795 1.77 1.301 2.935 1.301 2.209 0 4-1.791 4-4z"/></svg> Share
               </button>

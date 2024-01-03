@@ -8,8 +8,62 @@ import CF from '../image/carrefour.svg';
 import MP from '../image/monoprix.svg';
 
 import './item.css';
+import { useState } from 'react';
 
-export default function ProductContent({ index, productData }) {
+export default function ProductItem({ index, productData, onAddToProduct }) {
+  const [isAddedToList, setIsAddedToList] = useState(false);
+
+  const handleAddToList = async (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const list = await get_list_menu(event.target);
+
+    // Check if list is not null before calling onAddToProduct
+    if (list) {
+      onAddToProduct(productData, list._id);
+      setIsAddedToList(true);
+    }
+  };
+
+  const get_list_menu = async (target) => {
+    try {
+      const response = await fetch('https://barkaa-service.onrender.com/api/lists', {
+        credentials: 'include', // Include credentials for authenticated requests
+      });
+  
+      if (!response.ok) {
+        console.error('Error fetching lists:', response.statusText);
+        return null;
+      }
+  
+      const lists = await response.json();
+  
+      if (lists.length === 0) {
+        const createListConfirmation = window.confirm('You have no lists. Do you want to create one?');
+        if (createListConfirmation) {
+          // Implement logic to create a new list
+        }
+        return null;
+      } else {
+        const selectedList = window.prompt('You have multiple lists. Enter the name of the list to add the product:');
+        if (selectedList === null) {
+          return null;
+        }
+  
+        const matchingList = lists.find((list) => list.name === selectedList);
+        if (matchingList) {
+          return matchingList;
+        } else {
+          alert('List not found. Please enter a valid list name.');
+          return null;
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching lists:', error);
+      return null;
+    }
+  };
 
   // Convert the product prices to numerical values
   const price1 = numeral(productData.shop1Product.product_price.replace(' dt', '').replace(',', '')).value() || 0;
@@ -62,7 +116,7 @@ export default function ProductContent({ index, productData }) {
         <div className="prod-item">
           <a
             className="product-link"
-            href={`/product/${productData.shop1Product._id}?data=${encodedData}`}
+            href={`/product/${productData._id}?data=${encodedData}`}
             onClick={productClick}
             title={productData.shop1Product.name}
           >
@@ -81,13 +135,13 @@ export default function ProductContent({ index, productData }) {
           <div className="product-items">
           <div className="_item toolbar more pc-only">
               <div className="js-add_to_list_menu" onClick={fypAddToList} data-id="CTS136" >
-                <button className="add"  style={{display:"flex", flexDirection:"column"}}>
+              <button className={`add js-add_to_list_menu ${isAddedToList ? 'hidden' : ''}`} data-id={productData.shop1Product.id} onClick={handleAddToList}>
                   <div>
                     <img style={{ marginTop: '5px',marginRight: "6px" }}  src={add} alt="Add Icon" className="icon" /> {/* Use the imported SVG */}
                   </div>
                   <div className='txt'>List</div>
                 </button>
-                <button className="added" >
+                <button className={`added ${isAddedToList ? '' : 'hidden'}`} onClick={handleAddToList}>
                   <div>
                     <img src={added} alt="Add Icon" className="icon" /> {/* Use the imported SVG */}
                   </div> <div className='txt'>List</div>
@@ -99,7 +153,7 @@ export default function ProductContent({ index, productData }) {
               </button>
             </div>
             <div className="_item -prod_names">
-              <a href={`/product/${productData.shop1Product._id}?data=${encodedData}`} onClick={productClick} title={productData.shop1Product.name}>
+              <a href={`/product/${productData._id}?data=${encodedData}`} onClick={productClick} title={productData.shop1Product.name}>
                 {/* Product name and brand */}
                 <div className="_brand">{productData.shop1Product.brand}</div>
                 <div className="_title">{productData.shop1Product.name}</div>

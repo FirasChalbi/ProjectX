@@ -36,6 +36,8 @@ const matchedProductSchema = new mongoose.Schema({
   },
   similarityScoreName: Number,
   similarityScoreBrand: Number,
+}, {
+  timestamps: true,
 });
 
 const MatchedProducts = mongoose.model('MatchedProducts', matchedProductSchema, 'MatchedProducts');

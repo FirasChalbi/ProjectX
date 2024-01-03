@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import ProductContent from '../components/ProductItem';
+import ProductItem from '../components/ProductItem';
 import Sidebar from '../components/Sidebar';
 import { TopDeals } from '../components/TopDeals';
-
 
 function Home() {
   const [allProducts, setAllProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+   // eslint-disable-next-line
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,6 +44,52 @@ function Home() {
     return shuffledArray.slice(0, count);
   };
 
+  const handleAddToProduct = async (productData, listId) => {
+    try {
+      const productId = productData._id;
+  
+      // Check if productId is null or undefined
+      if (!productId) {
+        console.error('Product ID is null or undefined.');
+        return;
+      }
+  
+      console.log('Product ID:', productId); // Add this line for debugging
+  
+      setIsLoading(true);
+  
+      const response = await fetch(`https://barkaa-service.onrender.com/api/lists/${listId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: productData._id,
+          // Add any other necessary data you want to send to the backend
+        }),
+        credentials: 'include',
+      });
+  
+      if (!response.ok) {
+        console.error('Error adding product to list:', response.statusText);
+        // Handle error as needed, maybe show an error message to the user
+        return;
+      }
+  
+      // Product successfully added to the list
+      console.log('Product added to list:', response);
+      console.log('Adding product to list:', productData, 'List ID:', listId);
+  
+      // Optionally, you can provide user feedback here, e.g., show a success message
+    } catch (error) {
+      console.error('Error adding product to list:', error);
+      // Handle error as needed, maybe show an error message to the user
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -72,7 +119,12 @@ function Home() {
         >
           <TopDeals titre={"Today's Top Deals"} />
           {displayedProducts.map((product, index) => (
-            <ProductContent key={index} index={index + 1} productData={product} />
+            <ProductItem
+              key={index}
+              index={index + 1}
+              productData={product}
+              onAddToProduct={(productData, listId) => handleAddToProduct(productData, listId)}
+            />
           ))}
         </div>
       </div>

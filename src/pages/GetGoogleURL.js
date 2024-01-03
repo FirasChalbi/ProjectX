@@ -6,7 +6,7 @@ export const getGoogleUrl = (from: string) => {
   
     // OAuth options
     const options = {
-      redirect_uri: 'https://accounts.google.com/o/oauth2/auth',
+      redirect_uri: 'https://barkaa-service.onrender.com/auth/google/callback',
       client_id: '206715908451-sp66t76rpkg3v79pn96c4rs8h46cv80j.apps.googleusercontent.com',
       access_type: 'offline',
       response_type: 'code',

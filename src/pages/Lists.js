@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import newlist from '../image/newlist.png';
 import pixel from '../image/pixel.gif';
-import ProductItem from '../components/ProductItem'; // Make sure to import the ProductItem component
+
 import "./lists.css";
 
 function Lists() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [listName, setListName] = useState('');
   const [lists, setLists] = useState([]);
-  // eslint-disable-next-line
-  const [listItems, setListItems] = useState([]); // Assuming you have a list of items
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -20,25 +18,54 @@ function Lists() {
     setListName(e.target.value);
   };
 
-  const handleCreateList = (e) => {
+  const handleCreateList = async (e) => {
     e.preventDefault();
     if (listName.trim() !== '') {
-      const newList = {
-        id: Math.floor(Math.random() * 10000),
-        name: listName,
-      };
+      try {
+        const response = await fetch('https://barkaa-service.onrender.com/api/lists', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ name: listName }),
+        });
 
-      setLists([...lists, newList]);
-      setListName('');
-      setIsModalOpen(false);
+        if (response.ok) {
+          const newList = await response.json();
+          setLists([...lists, newList]);
+          setListName('');
+          setIsModalOpen(false);
+        } else {
+          console.error('Error creating list:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error creating list:', error);
+      }
     }
   };
 
-  const handleAddToProduct = (productId, productName) => {
-    // Handle adding the product to the list
-    console.log(`Adding product ${productName} with ID ${productId} to the list.`);
-  };
-  
+  useEffect(() => {
+    const fetchLists = async () => {
+      try {
+        const response = await fetch('https://barkaa-service.onrender.com/api/lists', {
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          const fetchedLists = await response.json();
+          setLists(fetchedLists);
+        } else {
+          console.error('Error fetching lists:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching lists:', error);
+      }
+    };
+
+    fetchLists();
+  }, []);  
+
   return (
     <div className="parent">
       <section id="folder_section">
@@ -49,7 +76,7 @@ function Lists() {
           <div>
             <div className="folders-grid">
               {lists.map((list) => (
-                <Link to={`/lists/${list.id}`} className="folder-item" key={list.id}>
+                <Link to={`/lists/${list._id}`} className="folder-item" key={list._id}>
                   <div className="_folder-imgs -empty-list">
                     <div className="_blank">
                       <img src={pixel} alt="New List" />
@@ -60,13 +87,6 @@ function Lists() {
                     <div className="_count">No items</div>
                   </div>
                 </Link>
-              ))}
-              {listItems.map((item) => (
-                <ProductItem
-                  key={item.id}
-                  productData={item}
-                  onAddToProduct={handleAddToProduct}
-                />
               ))}
               <div className="folder-item _add_item" onClick={toggleModal}>
                 <div className="_folder-imgs -empty-list">
@@ -131,7 +151,7 @@ function Lists() {
                   onClick={toggleModal}
                   style={{ cursor: 'pointer' }}
                 >
-                  <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
+                  <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
                 </svg>
               </div>
               <div className="_form">

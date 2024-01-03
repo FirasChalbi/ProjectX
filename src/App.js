@@ -15,6 +15,7 @@ import ListDetails from './pages/ListDetails';
 
 const App = () => {
   return (
+    
     <div className='App'>
     
     

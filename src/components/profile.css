@@ -1,3 +1,21 @@
+/* Default styles for the "add" button */
+.add {
+  /* Add your desired styles for the "add" button here */
+}
+
+/* Default styles for the "added" button (initially hidden) */
+.added.hidden{
+  display: none; /* Initially hidden */
+  /* Add your desired styles for the "added" button here */
+}
+
+/* Styles for the "added" button when it is active (visible) */
+.added.visible {
+  display: inline-block; /* Make it visible */
+  /* Add any additional styles for the "added" button when it is active */
+}
+
+
 .product-toolbar2 {
   display: flex;
   flex-direction: row;

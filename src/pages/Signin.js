@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './signin.css';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import { getGoogleUrl } from './GetGoogleURL';
 
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const location = useLocation();
+  let from = (location.state && location.state.from && location.state.from.pathname) || '/';
 
   const handleSignIn = async (event) => {
     event.preventDefault();
@@ -89,7 +92,7 @@ const Signin = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <a className="_forgot-password" href="http://localhost:4000/account/sign-in/forgot-password/">
+                <a className="_forgot-password" href="https://barkaa-service.onrender.com/account/sign-in/forgot-password/">
                   Forgot?
                 </a>
               </div>
@@ -109,7 +112,7 @@ const Signin = () => {
             </form>
           </div>
           <div className="account_social-buttons -col-2 -grid-gap-10">
-            <a className="cta -bg-transparent -border-grey -color-black -google" href="?redirect=&amp;login=Google" target="_top">
+            <a className="cta -bg-transparent -border-grey -color-black -google" href={getGoogleUrl(from)} target="_top">
               <svg className="icon">
                 <use xlinkHref="#svg_google"></use>
               </svg> Continue with Google

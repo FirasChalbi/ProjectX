@@ -10,18 +10,58 @@ function ProductItem({ productData, onAddToProduct }) {
     // Implement your logic for product click here
   };
 
-  const get_list_menu = (target) => {
-    // Your implementation of get_list_menu here
-    // This is where you would add your logic for handling the click event
-  };
-
-  const handleAddToList = (event) => {
+  const handleAddToList = async (event) => {
     event.stopPropagation();
     event.preventDefault();
-    get_list_menu(event.target);
-    onAddToProduct(productData);
+  
+    const list = await get_list_menu(event.target);
+    
+    // Check if list is not null before calling onAddToProduct
+    if (list) {
+      onAddToProduct(productData, list._id); // Assuming list object has an '_id' property
+      console.log(list._id)
+    }
   };
-
+  
+  const get_list_menu = async (target) => {
+    try {
+      const response = await fetch('https://barkaa-service.onrender.com/api/lists', {
+        credentials: 'include', // Include credentials for authenticated requests
+      });
+  
+      if (!response.ok) {
+        console.error('Error fetching lists:', response.statusText);
+        return null;
+      }
+  
+      const lists = await response.json();
+  
+      if (lists.length === 0) {
+        const createListConfirmation = window.confirm('You have no lists. Do you want to create one?');
+        if (createListConfirmation) {
+          // Implement logic to create a new list
+        }
+        return null;
+      } else {
+        const selectedList = window.prompt('You have multiple lists. Enter the name of the list to add the product:');
+        if (selectedList === null) {
+          return null;
+        }
+  
+        const matchingList = lists.find((list) => list.name === selectedList);
+        if (matchingList) {
+          return matchingList;
+        } else {
+          alert('List not found. Please enter a valid list name.');
+          return null;
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching lists:', error);
+      return null;
+    }
+  };
+  
   const getCheapestShop = () => {
     const shop1Product = productData.shop1Product;
     const shop2Product = productData.shop2Product;

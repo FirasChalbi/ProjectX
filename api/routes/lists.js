@@ -1,12 +1,13 @@
 // routes/lists.js
 const express = require('express');
 const router = express.Router();
-const { ensureAuthenticated } = require('../middlewares/auth'); // Adjust the path accordingly
+const { ensureAuthenticated } = require('../middlewares/auth');
 const {
   createList,
   getUserLists,
   addProductToList,
-} = require('../controllers/lists'); // Adjust the path accordingly
+  getSpecificList,
+} = require('../controllers/lists');
 
 // Create a new list
 router.post('/', ensureAuthenticated, createList);
@@ -14,7 +15,10 @@ router.post('/', ensureAuthenticated, createList);
 // Get user's lists
 router.get('/', ensureAuthenticated, getUserLists);
 
+// Get a specific list
+router.get('/:listId', ensureAuthenticated, getSpecificList);
+
 // Add a product to a list
-router.post('/:listId/products', ensureAuthenticated, addProductToList);
+router.post('/:listId', ensureAuthenticated, addProductToList);
 
 module.exports = router;

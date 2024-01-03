@@ -5,6 +5,7 @@ const User = require('../models/User'); // Adjust the path based on your file st
 
 // Serialize user into the session
 passport.serializeUser((user, done) => {
+  
   done(null, user.id);
 });
 
@@ -12,11 +13,13 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findById(id);
-    done(null, user);
+  
+  done(null, user);
   } catch (error) {
     done(error, null);
   }
 });
+
 
 // Local strategy for username/password authentication
 passport.use(new LocalStrategy(

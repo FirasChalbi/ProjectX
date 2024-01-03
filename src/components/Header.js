@@ -6,23 +6,36 @@ import heart from '../image/heart.svg';
 import search from '../image/search.svg';
 import './header.css';
 import imgSvg from '../image/img.svg';
+import useAuth from '../auth/useAuth';
 
 function Header() {
+  const { authenticated } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   const showSearch = () => {
     console.log('Show Search');
+    logUserAuthenticationStatus();
   };
 
   const hideSearch = () => {
     console.log('Hide Search');
+    logUserAuthenticationStatus();
   };
 
   const app_modal = () => {
     console.log('Open App Modal');
+    logUserAuthenticationStatus();
   };
 
+  const logUserAuthenticationStatus = () => {
+    if (authenticated) {
+      console.log('User is authenticated');
+    } else {
+      console.log('User is not authenticated');
+    }
+  };
+  
   const code_red_search_query = async (value) => {
     try {
       const response = await fetch(`https://barkaa-service.onrender.com/api/search?q=${encodeURIComponent(value)}`);
