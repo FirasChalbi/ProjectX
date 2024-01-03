@@ -14,7 +14,7 @@ const Signin = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/api/auth/signin', {
+      const response = await fetch('https://barkaa-service.onrender.com/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
