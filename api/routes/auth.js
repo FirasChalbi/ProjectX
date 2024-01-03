@@ -23,7 +23,7 @@ router.get('/check', (req, res) => {
     res.json({ name: req.user.displayName, email: req.user.email });
   } else {
     // User is not authenticated
-    res.json({ authenticated: false });
+    res.status(401).json({ error: 'User not authenticated' });
   }
 });
 // Logout
