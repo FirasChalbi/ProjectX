@@ -5,30 +5,29 @@ const useAuth = () => {
   const [authenticated, setAuthenticated] = useState(null);
 
   useEffect(() => {
-    // Check if the user is authenticated by asking the server
     const checkAuthentication = async () => {
       try {
         const response = await fetch('https://barkaa-service.onrender.com/auth/check', {
           method: 'GET',
-          credentials: 'include', // Include cookies in the request
+          credentials: 'include',
         });
   
         if (response.ok) {
           try {
-            const user = await response.json(); // Try to parse user information from the response
-            if (user && user.name) {
+            const user = await response.json();
+            if (user && user.authenticated === false) {
+              console.log('User is not authenticated.');
+              setAuthenticated(false);
+            } else {
               console.log(`User ${user.name} is authenticated.`);
               setAuthenticated(true);
-            } else {
-              console.log('User information is missing or invalid.');
-              setAuthenticated(false);
             }
           } catch (jsonError) {
             console.error('Error parsing JSON from server response:', jsonError);
             setAuthenticated(false);
           }
         } else {
-          console.log('User is not authenticated.');
+          console.log('Error:', response.statusText);
           setAuthenticated(false);
         }
       } catch (error) {
@@ -37,9 +36,9 @@ const useAuth = () => {
       }
     };
   
-
     checkAuthentication();
-  }, []); // This effect runs once when the component mounts
+  }, []);
+   // This effect runs once when the component mounts
 
   const login = async () => {
     // Simulate a login action, and the server would set the appropriate session or token
