@@ -1,5 +1,6 @@
 .mobile-Menu{
     width: max-content;
+    
 }
 
 .menuRow{
@@ -32,4 +33,13 @@
   .menu-item:hover {
     /* Add styling for the hover effect on menu items */
     background-color: #eee; /* Adjust the background color on hover */
+  }
+
+  .version{
+    position:fixed;
+    
+    right: 10px;
+    bottom: 70px;
+    color: #2b222270;
+
   }

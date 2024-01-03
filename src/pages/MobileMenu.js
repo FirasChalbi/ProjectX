@@ -15,7 +15,9 @@ export const MobileMenu = () => {
         <button className='menu-item'>I need help</button>
         <button className='menu-item'>About</button>
         <button className='menu-item'>Privacy policy</button>
+        
       </div>
+      <div className='version'>V1</div>
     </div>
   )
 }
