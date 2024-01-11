@@ -140,7 +140,14 @@ app.use('/api/match-products', matchedRoutesV2);
 app.use('/api/search', search);
 
 
+const http = require('http');
 
+// Add a middleware to enable keep-alive
+app.use((req, res, next) => {
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('Keep-Alive', 'timeout=5, max=1000');
+  next();
+});
 
 app.get('/health', (req, res) => {
   res.status(200).send('OK');
