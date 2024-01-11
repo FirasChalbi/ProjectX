@@ -89,6 +89,7 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+
 app.use('/auth', authRoutes);
 // Additional routes can be added here
 
@@ -137,6 +138,13 @@ app.use('/api/monoprix/products', monoprixRoutes);
 app.use('/api/match-product', matchedRoutes);
 app.use('/api/match-products', matchedRoutesV2);
 app.use('/api/search', search);
+
+
+
+
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
 
 app.listen(port, () => {
   console.log(`MY Server is running on ${port}`);
