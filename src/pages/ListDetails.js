@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './listDetails.css';
 import imgSvg from '../image/img.svg';
 
 const ListDetail = () => {
+  // Extract id from URL parameters
   const { id } = useParams();
-  const [isRenameActive, setIsRenameActive] = useState(false);
-  const [listName, setListName] = useState('FF');
-  const [listItems, setListItems] = useState([]); // State to track list items
 
+  // State to manage renaming and list details
+  const [isRenameActive, setIsRenameActive] = useState(false);
+  const [listName, setListName] = useState('');
+  const [listItems, setListItems] = useState([]);
+
+  // Function to add a product to the list
   const handleAddToProduct = (productId, productName) => {
-    // Implement your logic for adding a product to the current list
     const newItem = {
       id: Math.floor(Math.random() * 10000),
       productId,
@@ -20,24 +23,55 @@ const ListDetail = () => {
     setListItems([...listItems, newItem]);
   };
 
+  // Function to handle list name click
   const handleListNameClick = () => {
     setIsRenameActive(true);
   };
 
+  // Function to handle list name blur
   const handleListNameBlur = () => {
     setIsRenameActive(false);
     console.log('List name blurred:', listName);
   };
 
+  // Function to handle list name change
   const handleListNameChange = (e) => {
     setListName(e.target.value);
   };
 
+  // Function to handle list deletion
   const handleDeleteList = () => {
     if (window.confirm('Are you sure to delete this list?')) {
       console.log('List deleted');
     }
   };
+
+  // Effect to fetch list details when component mounts or id changes
+  useEffect(() => {
+    const fetchListDetails = async () => {
+      try {
+        // Fetch list details from the API using the id
+        const response = await fetch(`https://barkaa-service.onrender.com/api/lists/${id}`, {
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          // Parse the response and update state with list details
+          const listDetails = await response.json();
+          setListName(listDetails.name); // Assuming the API response has a 'name' property
+          setListItems(listDetails.items); // Assuming the API response has an 'items' property
+        } else {
+          console.error('Error fetching list details:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching list details:', error);
+      }
+    };
+
+    // Invoke the fetchListDetails function
+    fetchListDetails();
+  }, [id]);
+
 
   return (
     <div className="parent">

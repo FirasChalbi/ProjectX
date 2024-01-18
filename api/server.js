@@ -120,6 +120,16 @@ app.get('/api/users', async (req, res) => {
   }
 });
 
+app.get('/api/lists', async (req, res) => {
+  try {
+    const lists = await List.find();
+    res.json(lists);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 app.post('/api/auth/google/verify', (req, res) => {
   // Perform Google sign-in verification
   // Extract information from the request (e.g., authorization code)
@@ -147,6 +157,7 @@ app.use('/api/search', search);
 
 
 const http = require('http');
+const List = require('./models/List');
 
 // Add a middleware to enable keep-alive
 app.use((req, res, next) => {
