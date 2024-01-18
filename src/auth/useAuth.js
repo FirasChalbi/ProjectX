@@ -8,7 +8,7 @@ const useAuth = () => {
     // Check if the user is authenticated by asking the server
     const checkAuthentication = async () => {
       try {
-        const response = await fetch('http://localhost:4000/auth/check', {
+        const response = await fetch('https://barkaa-service.onrender.com/auth/check', {
           method: 'GET',
           credentials: 'include', // Include cookies in the request
         });
