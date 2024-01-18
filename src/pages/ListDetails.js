@@ -50,16 +50,37 @@ const ListDetail = () => {
   useEffect(() => {
     const fetchListDetails = async () => {
       try {
-        // Fetch list details from the API using the id
         const response = await fetch(`https://barkaa-service.onrender.com/api/lists/${id}`, {
           credentials: 'include',
         });
 
         if (response.ok) {
-          // Parse the response and update state with list details
           const listDetails = await response.json();
-          setListName(listDetails.name); // Assuming the API response has a 'name' property
-          setListItems(listDetails.items); // Assuming the API response has an 'items' property
+          setListName(listDetails.name);
+
+          // Assuming the 'products' property contains an array of product IDs
+          const productIds = listDetails.products;
+
+          // Fetch details for each product
+          const productDetailsPromises = productIds.map(async (productId) => {
+            const productResponse = await fetch(`https://barkaa-service.onrender.com/api/match-products/${productId}`, {
+              credentials: 'include',
+            });
+            if (productResponse.ok) {
+              return await productResponse.json();
+            } else {
+              console.error(`Error fetching product details for ID ${productId}:`, productResponse.statusText);
+              return null;
+            }
+          });
+
+          // Wait for all product details requests to complete
+          const productDetails = await Promise.all(productDetailsPromises);
+
+          // Filter out any potential null values (failed requests)
+          const validProductDetails = productDetails.filter((productDetail) => productDetail !== null);
+
+          setListItems(validProductDetails);
         } else {
           console.error('Error fetching list details:', response.statusText);
         }
@@ -68,7 +89,6 @@ const ListDetail = () => {
       }
     };
 
-    // Invoke the fetchListDetails function
     fetchListDetails();
   }, [id]);
 
