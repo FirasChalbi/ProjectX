@@ -11,6 +11,7 @@ const ListDetail = () => {
   const [isRenameActive, setIsRenameActive] = useState(false);
   const [listName, setListName] = useState('');
   const [listItems, setListItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   // Function to add a product to the list
   const handleAddToProduct = (productId, productName) => {
@@ -81,6 +82,14 @@ const ListDetail = () => {
           const validProductDetails = productDetails.filter((productDetail) => productDetail !== null);
 
           setListItems(validProductDetails);
+
+          // Calculate the total sum of product prices
+          const totalSum = validProductDetails.reduce(
+            (accumulator, productDetail) => accumulator + parseFloat(productDetail.shop1Product.product_price),
+            0
+          );
+
+          setTotalPrice(totalSum);
         } else {
           console.error('Error fetching list details:', response.statusText);
         }
@@ -91,7 +100,6 @@ const ListDetail = () => {
 
     fetchListDetails();
   }, [id]);
-
 
   return (
     <div className="parent">
@@ -131,7 +139,7 @@ const ListDetail = () => {
             <div className="flow-items -space-between">
               <div className="flow-items -gap-m">
                 <div>
-                  Total <b>12.50 DT</b>
+                  Total <b>{totalPrice.toFixed(2)} DT</b>
                 </div>
                 <div>
                   Items <b>{listItems.length}</b>
@@ -181,10 +189,10 @@ const ListDetail = () => {
               {listItems.map((item) => (
                 <div key={item.id} className="lists-item flow-items -space-between -gap-l -js-open_modal" data-id={id} style={{ flexGrow: 1 }}>
                   <div className="-img-wrapper">
-                    <img className="product-img" src="/img/product/VZW755" alt="Product" />
+                    <img className="product-img" src={item.shop1Product.imageSrc} alt="Product" />
                   </div>
                   <div className="product-name">
-                    <b>{item.productName}</b>
+                    <b>{item.shop1Product.name}</b>
                     <div id={`product_alert_${id}`} className="product_alert cheaper-tag">
                       Alerts off
                     </div>
@@ -192,9 +200,9 @@ const ListDetail = () => {
                   <div className="_qty">4x</div>
                   <div className="_price">
                     <span style={{ fontWeight: 500 }}>
-                      <span id={`pc${id}`}>1.50 DT</span>
+                      <span id={`pc${id}`}>{parseFloat(item.shop1Product.product_price).toFixed(2)} DT</span>
                     </span>
-                    <button onClick={() => handleAddToProduct(item.productId, item.productName)}>Add</button>
+                    <button onClick={() => handleAddToProduct(item.shop1Product._id, item.shop1Product.name)}>Add</button>
                   </div>
                 </div>
               ))}
