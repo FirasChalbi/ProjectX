@@ -14,6 +14,7 @@ const listsRoutes = require('./routes/lists');
 const User = require('./models/User'); // Import the User model
 
 const app = express();
+app.enable('trust proxy');
 const port = process.env.PORT || 4000;
 
 const allowedOrigins = ['http://localhost:3000', 'https://barkaa.netlify.app'];
@@ -39,8 +40,8 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
+      sameSite: 'none', // Allow cross-site requests
       secure: true, // Set this to true for secure cookies over HTTPS
-      sameSite: 'None', // Allow cross-site requests
     },
   })
 );
@@ -159,5 +160,5 @@ app.get('/health', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`M Server is running on ${port}`);
+  console.log(`Meee Server is running on ${port}`);
 });
