@@ -125,7 +125,7 @@ app.get('/api/lists', async (req, res) => {
     const lists = await List.find();
     res.json(lists);
   } catch (error) {
-    console.error('Error fetching users:', error);
+    console.error('Error fetching lists:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
