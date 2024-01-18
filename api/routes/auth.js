@@ -1,6 +1,6 @@
 // server/routes/auth.js
 const express = require('express');
-const { passport, ensureAuthenticated } = require('./middlewares/auth');
+const { passport, ensureAuthenticated } = require('../middlewares/auth');
 const router = express.Router();
 
 // Login with Google
