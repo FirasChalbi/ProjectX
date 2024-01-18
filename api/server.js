@@ -142,18 +142,6 @@ app.use('/api/match-product', matchedRoutes);
 app.use('/api/match-products', matchedRoutesV2);
 app.use('/api/search', search);
 
-router.get('/checkin', (req, res) => {
-  if (req.isAuthenticated()) {
-    console.log('Session:', req.session);
-    console.log('User Authenticated:', req.isAuthenticated());
-    // User is authenticated, send user information
-    res.json({ name: req.user.displayName, email: req.user.email });
-  } else {
-    // User is not authenticated
-    res.status(401).json({ error: 'User not authenticated' });
-  }
-});
-
 
 
 const http = require('http');
