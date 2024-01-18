@@ -38,10 +38,7 @@ app.use(
     secret: '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',
     resave: false,
     saveUninitialized: true,
-    cookie: {
-      secure: true, // Set this to true for secure cookies over HTTPS
-      
-    },
+    
   })
 );
 app.use(passport.initialize());
