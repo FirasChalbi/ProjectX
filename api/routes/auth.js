@@ -1,6 +1,6 @@
 // server/routes/auth.js
 const express = require('express');
-const passport = require('passport');
+const { passport, ensureAuthenticated } = require('./middlewares/auth');
 const router = express.Router();
 
 // Login with Google
@@ -17,7 +17,7 @@ router.get(
 );
 
 // Check authentication status
-router.get('/check', (req, res) => {
+router.get('/check', ensureAuthenticated, (req, res) => {
   if (req.isAuthenticated()) {
     // User is authenticated, send user information
     res.json({ name: req.user.displayName, email: req.user.email });
@@ -26,6 +26,7 @@ router.get('/check', (req, res) => {
     res.status(401).json({ error: 'User not authenticated' });
   }
 });
+
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();
