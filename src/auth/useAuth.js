@@ -16,7 +16,7 @@ const useAuth = () => {
         if (response.ok) {
           try {
             const user = await response.json(); // Try to parse user information from the response
-            if (user || user.name) {
+            if (user && user.name) {
               console.log(`User ${user.name} is authenticated.`);
               setAuthenticated(true);
             } else {

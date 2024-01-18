@@ -19,6 +19,8 @@ router.get(
 // Check authentication status
 router.get('/check', ensureAuthenticated, (req, res) => {
   if (req.isAuthenticated()) {
+    console.log('Session:', req.session);
+    console.log('User Authenticated:', req.isAuthenticated());
     // User is authenticated, send user information
     res.json({ name: req.user.displayName, email: req.user.email });
   } else {
