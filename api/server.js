@@ -39,8 +39,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: true, // Set this to true for secure cookies over HTTPS
-      httpOnly: true, // Set this to true for added security
+      
       sameSite: 'None', // Allow cross-site requests
     },
   })
