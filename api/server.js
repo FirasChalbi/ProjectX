@@ -40,6 +40,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       secure: true, // Set this to true for secure cookies over HTTPS
+      httpOnly: true, // Set this to true for added security
     },
   })
 );
@@ -158,5 +159,5 @@ app.get('/health', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`MY Server is running on ${port}`);
+  console.log(`M Server is running on ${port}`);
 });

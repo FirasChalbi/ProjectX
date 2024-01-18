@@ -1,6 +1,6 @@
 // server/routes/auth.js
 const express = require('express');
-const { passport, ensureAuthenticated } = require('../middlewares/auth');
+const passport = require('passport');
 const router = express.Router();
 
 // Login with Google
@@ -9,15 +9,15 @@ router.get('/google', passport.authenticate('google', { scope: ['profile', 'emai
 // Google callback
 router.get(
   '/google/callback',
-  passport.authenticate('google', { failureRedirect: 'https://barkaa.netlify.app/' }),
+  passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
     // Successful authentication
-    res.redirect('https://barkaa.netlify.app/');
+    res.redirect('/');
   }
 );
 
 // Check authentication status
-router.get('/check', ensureAuthenticated, (req, res) => {
+router.get('/check', (req, res) => {
   if (req.isAuthenticated()) {
     console.log('Session:', req.session);
     console.log('User Authenticated:', req.isAuthenticated());
