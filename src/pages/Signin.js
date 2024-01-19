@@ -122,11 +122,7 @@ const Signin = () => {
                 <use xlinkHref="#svg_facebook"></use>
               </svg> Continue with Facebook
             </a>
-            <a className="cta -bg-transparent -border-grey -color-black -outlook" href="?redirect=&amp;login=WindowsLive" target="_top">
-              <svg className="icon">
-                <use xlinkHref="#svg_outlook"></use>
-              </svg> Continue with Outlook
-            </a>
+            
             <a className="cta -bg-transparent -border-grey -color-black -twitter" href="?redirect=&amp;login=Twitter" target="_top">
               <svg className="icon">
                 <use xlinkHref="#svg_twitter"></use>
