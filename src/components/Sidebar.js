@@ -39,3 +39,6 @@ function Sidebar() {
 }
 
 export default Sidebar
+
+
+//<div class="notification " style="bottom: 50px; opacity: 1;"><div>Added to A.</div><a class="button" href="/lists/?open=181578">View</a></div>

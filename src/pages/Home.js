@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './home.css'
 import ProductItem from '../components/ProductItem';
 import Sidebar from '../components/Sidebar';
 import { TopDeals } from '../components/TopDeals';
@@ -91,7 +92,7 @@ function Home() {
   
   
   if (loading) {
-    return <div>Loading...</div>;
+    return <div class="i"><div></div><div></div></div>;
   }
 
   if (error) {
@@ -99,22 +100,28 @@ function Home() {
   }
 
   return (
-    <div className='parent'>
+    <div className='ok' >
+      <div className='okk'>
       <Sidebar />
-      <div
+      <div 
         style={{
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          alignItems: 'left',
+          justifyContent: 'left',
           minHeight: '100vh',
           padding: '0 20px', // Desktop padding
+          
+          
         }}
       >
-        <div
+        <div 
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            alignItems: 'left',
+            justifyContent: 'left',
+            
+            borderColor: "black"
           }}
         >
           <TopDeals titre={"Today's Top Deals"} />
@@ -127,6 +134,7 @@ function Home() {
             />
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

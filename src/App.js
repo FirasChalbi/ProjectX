@@ -10,6 +10,7 @@ import Lists from './pages/Lists';
 import { MobileMenu } from './pages/MobileMenu';
 import { Search } from './pages/Search';
 import Signin from './pages/Signin';
+import SignUp from './pages/SignUp';
 import ListDetails from './pages/ListDetails';
 
 
@@ -31,6 +32,8 @@ const App = () => {
         <Route path="/Menu" element={<MobileMenu />} />
         <Route path="/search" element={<Search />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<SignUp />} />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       

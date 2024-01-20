@@ -72,10 +72,10 @@ function MatchedProducts() {
 
   return (
     <div className='ok'>  
-    <div>
+    <div className='okk'>
     <Sidebar />
-    </div>
-    <div style={{paddingLeft:'20px', width:"max-content"}}>
+    
+    <div style={{paddingLeft:'20px', width:"fit-content"}}>
         <TopDeals titre="Filter by store" />
         <div className='container2' style={{ gap: '10px', marginTop: "30px"}}>
         <h2>Daily Deals</h2>
@@ -95,8 +95,10 @@ function MatchedProducts() {
             </div>
           </div>
         </div>
+        </div>
       </div>
     </div>
+    
     </div>
   );
 }

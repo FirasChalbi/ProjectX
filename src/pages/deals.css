@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     padding-top: 5px;
-    margin-left: -10px;
+    
     
 }
 
@@ -35,7 +35,7 @@
 	.sidebar.-active {position: sticky;}
 }
 
-@media(min-width:1000px) {.products-grid2 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin: 0; }}
+@media(min-width:1000px) {.products-grid2 { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); margin: 0; }}
 @media(max-width:999px) {.products-grid2 {display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); margin: 0; }}
 
 
@@ -45,8 +45,8 @@
       display: flex;
       justify-self: flex-end;
       flex-direction: column;
-      width: 900px;
-      margin-left: -90px;
+      width: 1200px;
+      
     }
   }
   

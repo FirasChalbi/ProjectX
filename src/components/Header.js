@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../image/logo.png';
-import user from '../image/user.png';
+import user1 from '../image/user.png';
 import heart from '../image/heart.svg';
 import search from '../image/search.svg';
 import './header.css';
 import imgSvg from '../image/img.svg';
 import useAuth from '../auth/useAuth';
+import Signup from '../pages/SignUp'; // Import the Signup component (replace with actual path)
 
 function Header() {
-  const { authenticated } = useAuth();
+  const { authenticated, user } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false); // New state for modal
   const navigate = useNavigate();
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   const showSearch = () => {
     console.log('Show Search');
@@ -62,11 +68,37 @@ function Header() {
     }
   };
 
+  /** const renderUserMenu = () => {
+    if (authenticated) {
+      return (
+        <>
+          <div className="_item">
+            {user && user.name && (
+              <>
+                <img style={{ width: '35px', height: '35px' }} src={user1} alt="User Icon" className="icon" />
+                <div className="_username">{user.name}</div>
+              </>
+            )}
+          </div>
+          <a href="/account/my-account/" className="_item">
+            Account
+          </a>
+          <a
+            onClick={() => window.confirm('Are you sure you want to logout?')}
+            href="/?sign-out=1&amp;redirect=/"
+            className="_item"
+          >
+            Logout
+          </a>
+        </>
+      );
+    }   }
+**/
+
   return (
     <header>
       <div className="_inner">
         <button className="js-open-menu">
-          
           <menu id="headerMenu" className="">
             <a href="/deals/" className="_item">
               Today's Deals
@@ -129,23 +161,30 @@ function Header() {
         <a className="list-button" href="/lists/">
           <img style={{ width: '35px', height: '35px' }} src={heart} alt="Favorites Icon" className="icon" />
         </a>
-        <button className="js-login-menu" style={{ cursor: 'pointer' }}>
-          <img style={{ width: '35px', height: '35px' }} src={user} alt="User Icon" className="icon" />
+        <button className="js-login-menu" style={{ cursor: 'pointer' }} onClick={toggleModal}>
+          <img style={{ width: '35px', height: '35px' }} src={user1} alt="User Icon" className="icon" />
           <menu id="headerAccountMenu">
+            {authenticated && (
+            <>
             <div className="_item">
-              <img style={{ width: '35px', height: '35px' }} src={user} alt="User Icon" className="icon" />
-              <div className="_username">Paradis</div>
-            </div>
-            <a href="/account/my-account/" className="_item">
-              Account
-            </a>
-            <a
-              onClick={() => window.confirm('Are you sure you want to logout?')}
-              href="/?sign-out=1&amp;redirect=/"
-              className="_item"
-            >
-              Logout
-            </a>
+            {user && user.name && (
+              <>
+                <img style={{ width: '35px', height: '35px' }} src={user1} alt="User Icon" className="icon" />
+                <div className="_username">{user.name}</div>
+              </>
+            )}
+          </div>
+          <a href="/account/my-account/" className="_item">
+            Account
+          </a>
+          <a
+            onClick={() => window.confirm('Are you sure you want to logout?')}
+            href="/?sign-out=1&amp;redirect=/"
+            className="_item"
+          >
+            Logout
+          </a>
+          </>)}
           </menu>
         </button>
       </div>
@@ -197,8 +236,28 @@ function Header() {
           </svg>
         </button>
       </div>
+      {isModalOpen && (
+        <div
+          className="modal-parent lists-modal"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          }}
+        >
+        <Signup />       
+        </div>
+        )}
     </header>
   );
 }
+
+
 
 export default Header;

@@ -61,10 +61,8 @@ h3{color:#000;}
   @media (min-width: 768px) {
     .top {
       display: flex;
-      justify-self: flex-end;
       flex-direction: column;
-      width: 900px;
-      margin-left: -90px;
+      
     }
   }
   
