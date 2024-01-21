@@ -12,6 +12,7 @@ import { Search } from './pages/Search';
 import Signin from './pages/Signin';
 import SignUp from './pages/SignUp';
 import ListDetails from './pages/ListDetails';
+import StoreProducts from './components/StoreProducts';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/product/:productId" element={<ProductProfile />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/deals" element={<Deals />} />
+        <Route path="/deals/:id" element={<StoreProducts />} />
         <Route path="/lists" element={<Lists />} />
         <Route path="/lists/:id" element={<ListDetails />} />
         <Route path="/Menu" element={<MobileMenu />} />

@@ -6,6 +6,7 @@ const { Strategy } = require('passport-google-oauth20');
 const { passport, ensureAuthenticated } = require('./middlewares/auth');
 const authRoutes = require('./routes/auth');
 const carrefourRoutes = require('./routes/carrefour');
+const mgRoutes = require('./routes/Mg');
 const monoprixRoutes = require('./routes/monoprix');
 const matchedRoutes = require('./routes/matchedProduct');
 const matchedRoutesV2 = require('./routes/matchedProducts');
@@ -141,6 +142,7 @@ app.get('/logout', (req, res) => {
 
 app.use('/api/lists', listsRoutes);
 app.use('/api/carrefour/products', carrefourRoutes);
+app.use('/api/mg/products', mgRoutes);
 app.use('/api/monoprix/products', monoprixRoutes);
 app.use('/api/match-product', matchedRoutes);
 app.use('/api/match-products', matchedRoutesV2);

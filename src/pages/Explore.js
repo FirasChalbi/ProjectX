@@ -20,33 +20,30 @@ function MatchedProducts() {
   }, []); // The empty dependency array means this effect runs once on component mount
 
   return (
-    <div>
-      <Sidebar />
-      
-    <div className='tile'>
-    
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          paddingLeft: "40px"
-        }}
-      >
-      
-      <div className="flow-items" style={{gap:"10px",textAlign: "left" }}><h2>What's Popular</h2></div>
-      <div className='products-grid-cn' style={{width:"70%"}}>
-    <div className='products-grid'> 
-        {matchedProducts.map((product, index) => (
-          
-            <ProductExplore key={product.shop1Product._id} index={index + 1} productData={product} />
-          
-        ))}
+<div className='ok'>  
+<div className='okk'>
+<Sidebar />
+
+<div style={{paddingLeft:'20px', width:"fit-content"}}>
+    <div className='container2' style={{ gap: '10px', marginTop: "30px"}}>
+
+    <div className="flow-items" style={{gap:"10px",textAlign: "left" }}><h2>What's Popular</h2></div>
+    <div className="tile">
+      <div className="products-grid-cn">
+        <div className="products-grid">
+        {matchedProducts.map((product, index) => (          
+          <ProductExplore key={product.shop1Product._id} index={index + 1} productData={product} />        
+      ))}          
+        </div>
+      </div>
     </div>
     </div>
-    </div>
-    </div>
-    </div>
+  </div>
+</div>
+
+</div>
+
+
   );
 }
 
