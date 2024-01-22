@@ -114,7 +114,7 @@ const Signin = () => {
                 </button>
                 <Link
                   className=""
-                  to="/account/sign-up/?modal=1"
+                  to="/signin"
                   style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: '500' }}
                 >
                     Sign in
@@ -123,18 +123,18 @@ const Signin = () => {
             </form>
           </div>
           <div className="account_social-buttons -col-2 -grid-gap-10">
-            <a className="cta -bg-transparent -border-grey -color-black -google" href={getGoogleUrl(from)} target="_top">
+            <a className="ctaa -bg-transparent -border-grey -color-black -google" href={getGoogleUrl(from)} target="_top">
               <svg className="icon">
                 <use xlinkHref="#svg_google"></use>
               </svg> Continue with Google
             </a>
-            <a className="cta -bg-transparent -border-grey -color-black -facebook" href="?redirect=&amp;login=Facebook" target="_top">
+            <a className="ctaa -bg-transparent -border-grey -color-black -facebook" href="?redirect=&amp;login=Facebook" target="_top">
               <svg className="icon">
                 <use xlinkHref="#svg_facebook"></use>
               </svg> Continue with Facebook
             </a>
             
-            <a className="cta -bg-transparent -border-grey -color-black -twitter" href="?redirect=&amp;login=Twitter" target="_top">
+            <a className="ctaa -bg-transparent -border-grey -color-black -twitter" href="?redirect=&amp;login=Twitter" target="_top">
               <svg className="icon">
                 <use xlinkHref="#svg_twitter"></use>
               </svg> Continue with Twitter

@@ -1,0 +1,38 @@
+
+.product-item ._img {
+    position: relative;
+    padding: 1px;
+}
+.products-grid > div {
+    border: 1px solid #ffffff00;
+    margin: 0 0 -1px -1px;
+    padding:0px;
+    margin-bottom: 15px;
+    
+}
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    margin: -20px -15px;
+    margin-top: 0;
+    gap: 10px;
+    margin: 0;
+
+}
+.product-item ._imgd {
+    position: relative;
+    padding: 1px;
+    height: 249px;
+    width: 250px;
+}
+.product-item ._img .imgprodd {
+    max-width: 200px;
+    width: 100%;
+    margin: auto;
+    display: block;
+    aspect-ratio: 1;
+    padding-top: 1px!important;
+    padding: 1px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './productExplore.css';
+import './ProductDeals.css';
 import CF from '../image/carrefour.svg';
 import MP from '../image/monoprix.svg';
 
@@ -95,7 +95,7 @@ function ProductItem({ productData, onAddToProduct }) {
               <path d="M12 21.35l-1.45-1.32C6.4 15.36 4 12.28 4 9.5 4 6.42 6.42 4 9.5 4c1.74 0 3.41.81 4.5 2.09C16.09 4.81 17.76 4 19.5 4 22.54 4 24 6.46 24 9.5c0 2.78-2.4 5.86-6.55 10.54L12 21.35z" />
             </svg>
           </button>
-          <img className="imgprod" src={productData.shop1Product.imageSrc} loading="lazy" alt="Product"/>
+          <img className="imgprodd" src={productData.shop1Product.imageSrc} loading="lazy" alt="Product"/>
         </div>
         <div className="_tag" style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
           <div className="_size">

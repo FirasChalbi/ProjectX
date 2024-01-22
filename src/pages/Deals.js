@@ -75,7 +75,7 @@ function MatchedProducts() {
     <div className='okk'>
     <Sidebar />
     
-    <div style={{paddingLeft:'20px', width:"fit-content"}}>
+    <div style={{ width:"fit-content"}}>
         <TopDeals titre="Filter by store" />
         <div className='container2' style={{ gap: '10px', marginTop: "30px"}}>
         <h2>Daily Deals</h2>

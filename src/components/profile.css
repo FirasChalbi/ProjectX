@@ -288,7 +288,7 @@ menu ._item .qty {width: 20px; background: #ddd; text-align: center; border-radi
 
 /* products grid */
 .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); margin:-20px -15px; margin-top: 0;}
-.products-grid > div { border: 1px solid #eeeeee; margin:0 0 -1px -1px; padding: 20px;    }
+/* .products-grid > div { border: 1px solid #eeeeee; margin:0 0 -1px -1px; padding: 20px;    }*/
 @media(min-width:1000px) {.products-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin: 0}}
 
 /* products grid small */
@@ -317,7 +317,7 @@ menu ._item .qty {width: 20px; background: #ddd; text-align: center; border-radi
 .product-item.-horizontal ._img{order:1;}
 .product-item.-horizontal ._info{order:2;}
 .product-item.-horizontal ._size{order:3;}
-.product-item ._img { position: relative;padding:15px;}
+
 .product-item ._img img{max-width: 200px;width: 100%;margin: auto;display: block;aspect-ratio: 1;/* for lazy load */}
 .product-item ._brand{ font-size: 1.4rem;font-weight: 600; margin-top: 15px}
 .product-item ._desc{font-size: 1.3rem; font-weight: 300; margin-top: 3px}
