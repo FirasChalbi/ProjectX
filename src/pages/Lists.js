@@ -7,14 +7,16 @@ import "./lists.css";
 import useAuth from '../auth/useAuth';
 
 function Lists() {
+  // eslint-disable-next-line
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [listName, setListName] = useState('');
   const [lists, setLists] = useState([]);
   const [showSignInNotice, setShowSignInNotice] = useState(false);
   const { authenticated } = useAuth();
-
+// eslint-disable-next-line
   const toggleModal = () => {
     if (authenticated) {
+      // eslint-disable-next-line
       setIsModalOpen(!isModalOpen);
     } else {
       // User is not authenticated, show a notice to sign in
