@@ -4,14 +4,29 @@ import newlist from '../image/newlist.png';
 import pixel from '../image/pixel.gif';
 
 import "./lists.css";
+import useAuth from '../auth/useAuth';
 
 function Lists() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [listName, setListName] = useState('');
   const [lists, setLists] = useState([]);
+  const [showSignInNotice, setShowSignInNotice] = useState(false);
+  const { authenticated } = useAuth();
 
   const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+    if (authenticated) {
+      setIsModalOpen(!isModalOpen);
+    } else {
+      // User is not authenticated, show a notice to sign in
+      setShowSignInNotice(true);
+      // You can customize this behavior, for example, redirecting to a sign-in page
+      // console.log('User not signed in. Show a notice or redirect to sign-in page.');
+      // login(); // For demonstration, prompt login directly
+    }
+  };
+
+  const handleSignInNoticeClose = () => {
+    setShowSignInNotice(false);
   };
 
   const handleInputChange = (e) => {
@@ -183,6 +198,13 @@ function Lists() {
               </div>
             </div>
           </form>
+        </div>
+      )}
+       {/* Notice for signing in */}
+       {showSignInNotice && (
+        <div className="sign-in-notice">
+          <p>Please sign in to create a new list.</p>
+          <button onClick={handleSignInNoticeClose}>Close</button>
         </div>
       )}
     </div>

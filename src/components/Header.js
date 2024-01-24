@@ -161,7 +161,8 @@ function Header() {
         <a className="list-button" href="/lists/">
           <img style={{ width: '35px', height: '35px' }} src={heart} alt="Favorites Icon" className="icon" />
         </a>
-        <button className="js-login-menu" style={{ cursor: 'pointer' }} onClick={toggleModal}>
+        <a className="js-login-menu" style={{ cursor: 'pointer' }} href='/signin/'>  
+        {/* onClick={toggleModal}  */}
           <img style={{ width: '35px', height: '35px' }} src={user1} alt="User Icon" className="icon" />
           <menu id="headerAccountMenu">
             {authenticated && (
@@ -186,7 +187,7 @@ function Header() {
           </a>
           </>)}
           </menu>
-        </button>
+        </a>
       </div>
       <div className="search-header-mob -hide-desktop" style={{ display: 'none' }}>
         <div className="search-bar-outer">
