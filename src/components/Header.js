@@ -15,6 +15,7 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false); // New state for modal
   const navigate = useNavigate();
 
+  // eslint-disable-next-line no-unused-vars
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
