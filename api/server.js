@@ -18,7 +18,7 @@ const app = express();
 app.enable('trust proxy');
 const port = process.env.PORT || 4000;
 
-const allowedOrigins = ['http://localhost:3000', 'https://barkaa.netlify.app'];
+const allowedOrigins = ['http://localhost:3000', 'https://barkaa.netlify.app', 'https://barka.tn'];
 
 app.use(
   cors({

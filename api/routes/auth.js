@@ -9,10 +9,10 @@ router.get('/google', passport.authenticate('google', { scope: ['profile', 'emai
 // Google callback
 router.get(
   '/google/callback',
-  passport.authenticate('google', { failureRedirect: 'https://barkaa.netlify.app/' }),
+  passport.authenticate('google', { failureRedirect: 'https://barka.tn/' }),
   (req, res) => {
     // Successful authentication
-    res.redirect('https://barkaa.netlify.app/');
+    res.redirect('https://barka.tn/');
   }
 );
 

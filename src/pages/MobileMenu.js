@@ -34,7 +34,7 @@ export const MobileMenu = () => {
         <button className='menu-item'>About</button>
         <button className='menu-item'>Privacy policy</button>
       </div>
-      <div className='version'>V1.2</div>
+      <div className='version'>V1.3</div>
     </div>
   );
 };
